@@ -14,7 +14,6 @@ include_once('../../database/Database.php');
 
 $hash = "udb_hash";
 
-// >> User login
 $checkUserCredentials = $db->prepare('SELECT * FROM users WHERE username = :username AND password = :password');
 $checkUserCredentials->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
 $checkUserCredentials->bindParam(':password', $hash, PDO::PARAM_STR);
