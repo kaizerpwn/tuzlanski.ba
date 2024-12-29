@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0a0f1d;
+  background-color: var(--background-color);
   padding: 25px 150px;
   border-bottom: 1px solid #ccd0d647;
 }
@@ -53,7 +53,7 @@ body {
 
 .mobile-menu {
   display: none;
-  background-color: #0a0f1d;
+  background-color: var(--background-color);
   flex-direction: column;
   padding: 10px 30px;
 }
