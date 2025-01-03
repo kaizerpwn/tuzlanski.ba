@@ -3,15 +3,11 @@
     <img src="logo.png" alt="tuzlanski.ba logo" />
   </div>
   <ul class="navbar-menu">
-    <li><a href="#">Najnovije</a></li>
-    <li><a href="#">Vijesti</a></li>
-    <li><a href="#">Biznis</a></li>
-    <li><a href="#">Sport</a></li>
-    <li><a href="#">Magazin</a></li>
-    <li><a href="#">Lifestyle</a></li>
-    <li><a href="#">Automoto</a></li>
-    <li><a href="#">Sci-Tech</a></li>
-    <li><a href="#">Viral</a></li>
+    @for (item of navigationCategoryLinks; track $index) {
+    <li>
+      <a href="#">{{ item }}</a>
+    </li>
+    }
   </ul>
   <div class="hamburger" onclick="toggleMobileMenu()">
     <span></span>
@@ -25,13 +21,7 @@
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#">Najnovije</a>
-  <a href="#">Vijesti</a>
-  <a href="#">Biznis</a>
-  <a href="#">Sport</a>
-  <a href="#">Magazin</a>
-  <a href="#">Lifestyle</a>
-  <a href="#">Automoto</a>
-  <a href="#">Sci-Tech</a>
-  <a href="#">Viral</a>
+  @for (item of navigationCategoryLinks; track $index) {
+  <a href="#">{{ item }}</a>
+  }
 </div>
