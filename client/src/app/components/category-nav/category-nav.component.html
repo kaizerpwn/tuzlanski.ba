@@ -1,16 +1,25 @@
 <div class="container">
-  <div class="category-nav">
+  <div class="category-nav" [style.borderBottom]="'2px solid ' + color">
     <div class="left">
-      <h2>Vijesti</h2>
+      <h2 [style.color]="color">{{ categoryName }}</h2>
     </div>
     <div class="right">
-      <a href="#" class="category-link">BIH</a>
-      <a href="#" class="category-link">REGIJA</a>
-      <a href="#" class="category-link">SVIJET</a>
-      <a href="#" class="category-link">CRNA HRONIKA</a>
-      <a href="#" class="category-link">ŽIVOT</a>
-      <a href="#" class="category-link">HUMANO</a>
-      <a href="#" class="category-link more">VIŠE</a>
+      <ng-container *ngFor="let item of subCategories | slice : 0 : 3">
+        <a
+          href="#"
+          class="category-link"
+          [style.backgroundColor]="backgroundColor"
+          [style.color]="color"
+          >{{ item }}</a
+        >
+      </ng-container>
+      <a
+        href="#"
+        class="category-link more"
+        [style.borderColor]="color"
+        [style.color]="color"
+        >VIŠE</a
+      >
     </div>
   </div>
 </div>

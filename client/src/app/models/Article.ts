@@ -1,4 +1,4 @@
-class Article {
+export class Article {
   private id: number;
   private title: string | null;
   private thumbnail: string | null;

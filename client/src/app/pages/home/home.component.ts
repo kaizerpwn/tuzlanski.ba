@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { NewsService } from '../../services/news.service';
+import { forkJoin } from 'rxjs';
+import { CATEGORIES } from '../../utils/constants';
 import { BigNewsCardComponent } from '../../components/big-news-card/big-news-card.component';
 import { SideNewsListComponent } from '../../components/side-news-list/side-news-list.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SmallNewsCardComponent } from '../../components/small-news-card/small-news-card.component';
 import { CategoryNavComponent } from '../../components/category-nav/category-nav.component';
-import { NewsService } from '../../services/news.service';
+import { Article } from '../../models/Article';
+import { findMostUsedSubCategories } from '../../utils/helpers';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +21,49 @@ import { NewsService } from '../../services/news.service';
     CategoryNavComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  data: { [key: string]: Article[] } = {};
+  ALL_CATEGORIES = CATEGORIES;
+  findMostUsedSubCategories = findMostUsedSubCategories;
+
   constructor(private newsService: NewsService) {
-    this.newsService.getNews().subscribe((data) => {
-      console.log(data);
+    this.loadNewsByCategory();
+  }
+
+  private loadNewsByCategory(): void {
+    const requests = this.newsService.getAllCategoriesNews();
+    forkJoin(requests).subscribe((data) => {
+      this.data = this.mapNewsToCategories(data);
+      console.log(this.data);
     });
+  }
+
+  private mapNewsToCategories(newsData: any[]): { [key: string]: Article[] } {
+    return CATEGORIES.reduce(
+      (acc: { [key: string]: Article[] }, category, index) => {
+        acc[category.name] = newsData[index].map(
+          (item: any) =>
+            new Article(
+              item.id,
+              item.title,
+              item.thumbnail,
+              item.image_source,
+              item.images,
+              item.source_link,
+              item.category,
+              item.sub_categories,
+              item.short_description,
+              item.description,
+              item.keywords,
+              item.author,
+              item.language
+            )
+        );
+        return acc;
+      },
+      {}
+    );
   }
 }
