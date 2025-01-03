@@ -1,0 +1,76 @@
+.container {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: #172132;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #ffffff;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  background-color: var(--background-color);
+  border: 1px solid #111;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.login-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+}
+
+.register-new-account {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.register-new-account a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.register-new-account a:hover {
+  text-decoration: underline;
+}
