@@ -1,0 +1,27 @@
+.news-container {
+  margin: 0 auto;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  flex-wrap: wrap;
+}
+.main-news {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main-news img {
+  height: auto;
+  display: block;
+}
+
+.horizontal-news-list {
+  margin: 0 auto;
+  display: flex;
+  gap: 47px;
+  width: 90%;
+  flex-wrap: wrap;
+}
