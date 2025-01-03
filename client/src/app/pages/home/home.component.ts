@@ -4,6 +4,7 @@ import { SideNewsListComponent } from '../../components/side-news-list/side-news
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SmallNewsCardComponent } from '../../components/small-news-card/small-news-card.component';
 import { CategoryNavComponent } from '../../components/category-nav/category-nav.component';
+import { NewsService } from '../../services/news.service';
 
 @Component({
   selector: 'app-home',
@@ -18,4 +19,10 @@ import { CategoryNavComponent } from '../../components/category-nav/category-nav
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  constructor(private newsService: NewsService) {
+    this.newsService.getNews().subscribe((data) => {
+      console.log(data);
+    });
+  }
+}

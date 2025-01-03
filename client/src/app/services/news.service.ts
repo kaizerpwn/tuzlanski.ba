@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_URL } from '../../environment';
+import { API_URL } from '../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,9 @@ import { API_URL } from '../../environment';
 export class NewsService {
   constructor(private http: HttpClient) {}
 
-  getNews(query: string) {
-    return this.http.get(`${API_URL}/GetAllNews.controller.php?${query}`);
+  getNews(category?: string) {
+    return this.http.get(`${API_URL}/News/GetAllNews.controller.php`, {
+      params: category ? { category } : {},
+    });
   }
 }

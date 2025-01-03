@@ -1,5 +1,6 @@
 <?php
 
+include_once('../../config/CORS.php');
 include_once('../../database/Database.php');
 
 $category = isset($_GET['category']) ? $_GET['category'] : null;
