@@ -9,5 +9,8 @@ import { CATEGORIES } from '../../utils/constants';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  navigationCategoryLinks = ['Najnovije', ...CATEGORIES];
+  navigationCategoryLinks = [
+    { name: 'Najnovije', color: '#2ad1d2' },
+    ...CATEGORIES,
+  ];
 }
