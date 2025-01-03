@@ -1,65 +1,149 @@
-export class Article {
+class Article {
   private id: number;
-  private title: string;
-  private image: string;
-  private source_link: string;
-  private categories: string[];
-  private short_description: string;
-  private description: string;
-  private keywords: string[];
-  private author: string;
-  private language: string;
+  private title: string | null;
+  private thumbnail: string | null;
+  private image_source: string | null;
+  private images: string | null;
+  private source_link: string | null;
+  private category: string | null;
+  private sub_categories: string | null;
+  private short_description: string | null;
+  private description: string | null;
+  private keywords: string | null;
+  private author: string | null;
+  private language: string | null;
 
-  constructor(data: Article) {
-    this.id = data.id;
-    this.title = data.title;
-    this.image = data.image;
-    this.source_link = data.source_link;
-    this.categories = data.categories;
-    this.short_description = data.short_description;
-    this.description = data.description;
-    this.keywords = data.keywords;
-    this.author = data.author;
-    this.language = data.language;
+  constructor(
+    id: number,
+    title: string | null = null,
+    thumbnail: string | null = null,
+    image_source: string | null = null,
+    images: string | null = null,
+    source_link: string | null = null,
+    category: string | null = null,
+    sub_categories: string | null = null,
+    short_description: string | null = null,
+    description: string | null = null,
+    keywords: string | null = null,
+    author: string | null = null,
+    language: string | null = null
+  ) {
+    this.id = id;
+    this.title = title;
+    this.thumbnail = thumbnail;
+    this.image_source = image_source;
+    this.images = images;
+    this.source_link = source_link;
+    this.category = category;
+    this.sub_categories = sub_categories;
+    this.short_description = short_description;
+    this.description = description;
+    this.keywords = keywords;
+    this.author = author;
+    this.language = language;
   }
 
   getId(): number {
     return this.id;
   }
 
-  getTitle(): string {
+  setId(value: number): void {
+    this.id = value;
+  }
+
+  getTitle(): string | null {
     return this.title;
   }
 
-  getImage(): string {
-    return this.image;
+  setTitle(value: string | null): void {
+    this.title = value;
   }
 
-  getSourceLink(): string {
+  getThumbnail(): string | null {
+    return this.thumbnail;
+  }
+
+  setThumbnail(value: string | null): void {
+    this.thumbnail = value;
+  }
+
+  getImageSource(): string | null {
+    return this.image_source;
+  }
+
+  setImageSource(value: string | null): void {
+    this.image_source = value;
+  }
+
+  getImages(): string | null {
+    return this.images;
+  }
+
+  setImages(value: string | null): void {
+    this.images = value;
+  }
+
+  getSourceLink(): string | null {
     return this.source_link;
   }
 
-  getCategories(): string[] {
-    return this.categories;
+  setSourceLink(value: string | null): void {
+    this.source_link = value;
   }
 
-  getShortDescription(): string {
+  getCategory(): string | null {
+    return this.category;
+  }
+
+  setCategory(value: string | null): void {
+    this.category = value;
+  }
+
+  getSubCategories(): string | null {
+    return this.sub_categories;
+  }
+
+  setSubCategories(value: string | null): void {
+    this.sub_categories = value;
+  }
+
+  getShortDescription(): string | null {
     return this.short_description;
   }
 
-  getDescription(): string {
+  setShortDescription(value: string | null): void {
+    this.short_description = value;
+  }
+
+  getDescription(): string | null {
     return this.description;
   }
 
-  getKeywords(): string[] {
+  setDescription(value: string | null): void {
+    this.description = value;
+  }
+
+  getKeywords(): string | null {
     return this.keywords;
   }
 
-  getAuthor(): string {
+  setKeywords(value: string | null): void {
+    this.keywords = value;
+  }
+
+  getAuthor(): string | null {
     return this.author;
   }
 
-  getLanguage(): string {
+  setAuthor(value: string | null): void {
+    this.author = value;
+  }
+
+  getLanguage(): string | null {
     return this.language;
+  }
+
+  setLanguage(value: string | null): void {
+    this.language = value;
   }
 }
