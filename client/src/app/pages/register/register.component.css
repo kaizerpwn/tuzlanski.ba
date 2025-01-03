@@ -8,7 +8,7 @@
   height: 100vh;
 }
 
-.login-container {
+.register-container {
   background-color: #172132;
   padding: 2rem;
   border-radius: 8px;
@@ -18,13 +18,13 @@
   max-width: 400px;
 }
 
-.login-container h1 {
+.register-container h1 {
   font-size: 1.5rem;
   margin-bottom: 3rem;
   color: #ffffff;
 }
 
-.login-container form {
+.register-container form {
   display: flex;
   flex-direction: column;
 }
@@ -59,7 +59,7 @@
   font-size: 0.9rem;
 }
 
-.login-btn {
+.register-btn {
   background-color: #ff5252;
   color: #ffffff;
   border: none;
@@ -70,21 +70,21 @@
   transition: background-color 0.3s;
 }
 
-.login-btn:hover {
+.register-btn:hover {
   opacity: 0.9;
 }
 
-.register-new-account {
+.login-existing-account {
   margin-top: 1rem;
   font-size: 0.9rem;
   color: #ffffff;
 }
 
-.register-new-account a {
+.login-existing-account a {
   color: #ff5252;
   text-decoration: none;
 }
 
-.register-new-account a:hover {
+.login-existing-account a:hover {
   text-decoration: underline;
 }

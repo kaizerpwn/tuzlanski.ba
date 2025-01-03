@@ -2,20 +2,57 @@
   <div class="login-container">
     <img class="logo" src="/logo.png" alt="logo tuzlanski.ba" />
     <h1>Prijavite se</h1>
-    <form>
-      <input
-        type="email"
-        class="form-input"
-        placeholder="Email adresa"
-        required
-      />
-      <input
-        type="password"
-        class="form-input"
-        placeholder="Lozinka"
-        required
-      />
-      <button type="submit" class="login-btn">Prijavi se</button>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Email adresa"
+          formControlName="email"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+        >
+          <small *ngIf="loginForm.get('email')?.errors?.['required']"
+            >Email adresa je obavezna.</small
+          >
+          <small *ngIf="loginForm.get('email')?.errors?.['email']"
+            >Email adresa nije validna.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Lozinka"
+          formControlName="password"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        >
+          <small *ngIf="loginForm.get('password')?.errors?.['required']"
+            >Lozinka je obavezna.</small
+          >
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']"
+            >Lozinka mora imati najmanje 6 karaktera.</small
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn" [disabled]="loginForm.invalid">
+        Prijavi se
+      </button>
     </form>
     <p class="register-new-account">
       Ne posjedujete račun? <a href="#">Registrujte se</a>

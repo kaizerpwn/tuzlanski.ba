@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="register-container">
+    <img class="logo" src="/logo.png" alt="logo tuzlanski.ba" />
+    <h1>Registrujte se</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Korisničko ime"
+          formControlName="username"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            registerForm.get('username')?.invalid &&
+            registerForm.get('username')?.touched
+          "
+        >
+          <small *ngIf="registerForm.get('username')?.errors?.['required']"
+            >Korisničko ime je obavezno.</small
+          >
+          <small *ngIf="registerForm.get('username')?.errors?.['minlength']"
+            >Korisničko ime mora imati najmanje 3 karaktera.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-input"
+          placeholder="Email adresa"
+          formControlName="email"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched
+          "
+        >
+          <small *ngIf="registerForm.get('email')?.errors?.['required']"
+            >Email adresa je obavezna.</small
+          >
+          <small *ngIf="registerForm.get('email')?.errors?.['email']"
+            >Email adresa nije validna.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Lozinka"
+          formControlName="password"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+        >
+          <small *ngIf="registerForm.get('password')?.errors?.['required']"
+            >Lozinka je obavezna.</small
+          >
+          <small *ngIf="registerForm.get('password')?.errors?.['minlength']"
+            >Lozinka mora imati najmanje 6 karaktera.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Potvrdite lozinku"
+          formControlName="confirmPassword"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmPassword')?.touched"
+        >
+          <small>Lozinke se ne podudaraju.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="date"
+          class="form-input"
+          placeholder="Datum rođenja"
+          formControlName="dateOfBirth"
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            registerForm.get('dateOfBirth')?.invalid &&
+            registerForm.get('dateOfBirth')?.touched
+          "
+        >
+          <small>Datum rođenja je obavezan.</small>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="register-btn"
+        [disabled]="registerForm.invalid"
+      >
+        Registrujte se
+      </button>
+    </form>
+    <p class="login-existing-account">
+      Već imate račun? <a href="#">Prijavite se</a>
+    </p>
+  </div>
+</div>
