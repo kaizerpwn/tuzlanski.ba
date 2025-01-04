@@ -20,11 +20,10 @@
   [backgroundColor]="item.backgroundColor"
   [subCategories]="findMostUsedSubCategories(data[item.name])"
 />
-}
 
 <div class="horizontal-news-list">
+  @for (item of data[item.name]; track $index) {
   <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
+  }
 </div>
+}
