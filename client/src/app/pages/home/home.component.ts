@@ -58,7 +58,8 @@ export class HomeComponent {
               item.description,
               item.keywords,
               item.author,
-              item.language
+              item.language,
+              item.published_at
             )
         );
         return acc;

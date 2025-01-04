@@ -1,32 +1,34 @@
 export class Article {
   private id: number;
-  private title: string | null;
-  private thumbnail: string | null;
-  private image_source: string | null;
-  private images: string | null;
-  private source_link: string | null;
-  private category: string | null;
-  private sub_categories: string | null;
-  private short_description: string | null;
-  private description: string | null;
-  private keywords: string | null;
-  private author: string | null;
-  private language: string | null;
+  private title: string;
+  private thumbnail: string;
+  private image_source: string;
+  private images: string;
+  private source_link: string;
+  private category: string;
+  private sub_categories: string;
+  private short_description: string;
+  private description: string;
+  private keywords: string;
+  private author: string;
+  private language: string;
+  private published_at: string;
 
   constructor(
     id: number,
-    title: string | null = null,
-    thumbnail: string | null = null,
-    image_source: string | null = null,
-    images: string | null = null,
-    source_link: string | null = null,
-    category: string | null = null,
-    sub_categories: string | null = null,
-    short_description: string | null = null,
-    description: string | null = null,
-    keywords: string | null = null,
-    author: string | null = null,
-    language: string | null = null
+    title: string,
+    thumbnail: string,
+    image_source: string,
+    images: string,
+    source_link: string,
+    category: string,
+    sub_categories: string,
+    short_description: string,
+    description: string,
+    keywords: string,
+    author: string,
+    language: string,
+    published_at: string
   ) {
     this.id = id;
     this.title = title;
@@ -41,6 +43,7 @@ export class Article {
     this.keywords = keywords;
     this.author = author;
     this.language = language;
+    this.published_at = published_at;
   }
 
   getId(): number {
@@ -51,99 +54,107 @@ export class Article {
     this.id = value;
   }
 
-  getTitle(): string | null {
+  getTitle(): string {
     return this.title;
   }
 
-  setTitle(value: string | null): void {
+  setTitle(value: string): void {
     this.title = value;
   }
 
-  getThumbnail(): string | null {
+  getThumbnail(): string {
     return this.thumbnail;
   }
 
-  setThumbnail(value: string | null): void {
+  setThumbnail(value: string): void {
     this.thumbnail = value;
   }
 
-  getImageSource(): string | null {
+  getImageSource(): string {
     return this.image_source;
   }
 
-  setImageSource(value: string | null): void {
+  setImageSource(value: string): void {
     this.image_source = value;
   }
 
-  getImages(): string | null {
+  getImages(): string {
     return this.images;
   }
 
-  setImages(value: string | null): void {
+  setImages(value: string): void {
     this.images = value;
   }
 
-  getSourceLink(): string | null {
+  getSourceLink(): string {
     return this.source_link;
   }
 
-  setSourceLink(value: string | null): void {
+  setSourceLink(value: string): void {
     this.source_link = value;
   }
 
-  getCategory(): string | null {
+  getCategory(): string {
     return this.category;
   }
 
-  setCategory(value: string | null): void {
+  setCategory(value: string): void {
     this.category = value;
   }
 
-  getSubCategories(): string | null {
+  getSubCategories(): string {
     return this.sub_categories;
   }
 
-  setSubCategories(value: string | null): void {
+  setSubCategories(value: string): void {
     this.sub_categories = value;
   }
 
-  getShortDescription(): string | null {
+  getShortDescription(): string {
     return this.short_description;
   }
 
-  setShortDescription(value: string | null): void {
+  setShortDescription(value: string): void {
     this.short_description = value;
   }
 
-  getDescription(): string | null {
+  getDescription(): string {
     return this.description;
   }
 
-  setDescription(value: string | null): void {
+  setDescription(value: string): void {
     this.description = value;
   }
 
-  getKeywords(): string | null {
+  getKeywords(): string {
     return this.keywords;
   }
 
-  setKeywords(value: string | null): void {
+  setKeywords(value: string): void {
     this.keywords = value;
   }
 
-  getAuthor(): string | null {
+  getAuthor(): string {
     return this.author;
   }
 
-  setAuthor(value: string | null): void {
+  setAuthor(value: string): void {
     this.author = value;
   }
 
-  getLanguage(): string | null {
+  getLanguage(): string {
     return this.language;
   }
 
-  setLanguage(value: string | null): void {
+  setLanguage(value: string): void {
     this.language = value;
+  }
+
+  getPublishedAt(): string {
+    return this.published_at;
+  }
+
+  setPublishedAt(value: string): void {
+    this.published_at = value;
   }
 }

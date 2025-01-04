@@ -13,17 +13,24 @@
   <app-small-news-card></app-small-news-card>
 </div>
 
-@for (item of ALL_CATEGORIES; track $index) {
+@for (category of ALL_CATEGORIES; track $index) {
 <app-category-nav
-  [categoryName]="item.name"
-  [color]="item.color"
-  [backgroundColor]="item.backgroundColor"
-  [subCategories]="findMostUsedSubCategories(data[item.name])"
+  [categoryName]="category.name"
+  [color]="category.color"
+  [backgroundColor]="category.backgroundColor"
+  [subCategories]="findMostUsedSubCategories(data[category.name])"
 />
 
 <div class="horizontal-news-list">
-  @for (item of data[item.name]; track $index) {
-  <app-small-news-card></app-small-news-card>
+  @for (newsItem of data[category.name]; track $index) {
+  <app-small-news-card
+    [title]="newsItem.getTitle()"
+    [thumbnail]="newsItem.getThumbnail()"
+    [imageSource]="newsItem.getImageSource()"
+    [publishedAt]="newsItem.getPublishedAt()"
+    [categoryName]="newsItem.getCategory()"
+    [color]="category.color"
+  />
   }
 </div>
 }

@@ -20,16 +20,16 @@
 }
 
 .article-item .image-container {
-  width: 130px;
-  height: 88px;
+  width: 350px;
+  height: 200px;
   border-radius: 8px;
   margin-right: 16px;
   position: relative;
 }
 
 .article-item .image-container img {
-  width: 100%;
-  height: 100%;
+  width: 350px;
+  height: 200px;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
