@@ -50,3 +50,13 @@ export const formatTimeAgo = (dateString: string): string => {
     return `Prije ${days} dana`;
   }
 };
+
+export const exportFirstSubCategory = (subCategories: string): string => {
+  try {
+    const parsedSubCategoriesJSON = JSON.parse(subCategories || '[]');
+    return decodeURIComponent(parsedSubCategoriesJSON[0]);
+  } catch (error) {
+    console.error('Error parsing sub-categories JSON:', error);
+    return '';
+  }
+};

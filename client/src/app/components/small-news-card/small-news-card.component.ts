@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { formatTimeAgo } from '../../utils/helpers';
+import { exportFirstSubCategory, formatTimeAgo } from '../../utils/helpers';
 
 @Component({
   selector: 'app-small-news-card',
@@ -19,6 +19,7 @@ export class SmallNewsCardComponent implements OnChanges {
 
   safeImageUrl!: SafeUrl;
   formattedTime!: string;
+  firstSubCategory!: string;
 
   constructor(private sanitizer: DomSanitizer) {}
 
@@ -29,6 +30,10 @@ export class SmallNewsCardComponent implements OnChanges {
 
     if (changes['publishedAt'] && this.publishedAt) {
       this.formattedTime = formatTimeAgo(this.publishedAt);
+    }
+
+    if (changes['categoryName'] && this.categoryName) {
+      this.formattedTime = exportFirstSubCategory(this.categoryName);
     }
   }
 }
