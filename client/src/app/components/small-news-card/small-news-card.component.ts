@@ -33,7 +33,7 @@ export class SmallNewsCardComponent implements OnChanges {
     }
 
     if (changes['categoryName'] && this.categoryName) {
-      this.formattedTime = exportFirstSubCategory(this.categoryName);
+      this.firstSubCategory = exportFirstSubCategory(this.categoryName);
     }
   }
 }

@@ -2,7 +2,7 @@
 <?php
 $MYSQL_INFO = "mysql:host=localhost;dbname=news-database";
 $MYSQL_USER = "root";
-$MYSQL_PASSWORD = "root";
+$MYSQL_PASSWORD = "";
 
 $db = new PDO($MYSQL_INFO, $MYSQL_USER, $MYSQL_PASSWORD);
 
