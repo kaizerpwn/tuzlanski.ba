@@ -29,3 +29,24 @@ export const findMostUsedSubCategories = (articles: Article[]): string[] => {
     .slice(0, 10)
     .map(([subCategory]) => subCategory);
 };
+
+export const formatTimeAgo = (dateString: string): string => {
+  const publishedDate = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor(
+    (now.getTime() - publishedDate.getTime()) / 1000
+  );
+
+  if (diffInSeconds < 60) {
+    return `Prije ${diffInSeconds} sekundi`;
+  } else if (diffInSeconds < 3600) {
+    const minutes = Math.floor(diffInSeconds / 60);
+    return `Prije ${minutes} minuta`;
+  } else if (diffInSeconds < 86400) {
+    const hours = Math.floor(diffInSeconds / 3600);
+    return `Prije ${hours} sati`;
+  } else {
+    const days = Math.floor(diffInSeconds / 86400);
+    return `Prije ${days} dana`;
+  }
+};
