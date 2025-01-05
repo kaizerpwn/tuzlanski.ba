@@ -1,0 +1,163 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.footer {
+  margin-top: 5%;
+  border-top: 1px solid #2a2a2a;
+}
+.footer-top {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-logo img {
+  height: 30px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.social-icon {
+  color: #ffffff;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nav-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.nav-title.vijesti {
+  color: #ff3b3b;
+}
+.nav-title.biznis {
+  color: #3b5bff;
+}
+.nav-title.sport {
+  color: #3bb7ff;
+}
+.nav-title.magazin {
+  color: #ffa03b;
+}
+.nav-title.lifestyle {
+  color: #ff3bd9;
+}
+.nav-title.automoto {
+  color: #3bffe3;
+}
+.nav-title.sci-tech {
+  color: #919191;
+}
+.nav-title.viral {
+  color: #3bff3b;
+}
+
+.nav-link {
+  color: #919191;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  margin-bottom: 2%;
+}
+
+.bottom-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.bottom-links a {
+  color: #919191;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.app-downloads {
+  display: flex;
+  gap: 1rem;
+}
+
+.app-downloads img {
+  height: 40px;
+}
+
+@media (max-width: 1200px) {
+  .nav-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer {
+    padding: 1rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .bottom-section {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .bottom-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
