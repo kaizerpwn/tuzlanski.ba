@@ -1,6 +1,7 @@
 <div class="news-container">
   <div class="main-news">
     <app-big-news-card
+      [id]="latestArticles[0].getId()"
       [title]="latestArticles[0].getTitle()"
       [thumbnail]="latestArticles[0].getThumbnail()"
       [imageSource]="latestArticles[0].getImageSource()"
@@ -16,6 +17,7 @@
 <div class="horizontal-news-list">
   @for (newsItem of latestArticles.slice(3); track $index) {
   <app-small-news-card
+    [id]="newsItem.getId()"
     [title]="newsItem.getTitle()"
     [thumbnail]="newsItem.getThumbnail()"
     [imageSource]="newsItem.getImageSource()"
@@ -29,6 +31,7 @@
 <div class="horizontal-news-list">
   @for (newsItem of data; track $index) {
   <app-small-news-card
+    [id]="newsItem.getId()"
     [title]="newsItem.getTitle()"
     [thumbnail]="newsItem.getThumbnail()"
     [imageSource]="newsItem.getImageSource()"
