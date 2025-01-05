@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         empty($data['username']) ||
         empty($data['email']) ||
         empty($data['password']) ||
-        empty($data['dateOfBirth'])
+        empty($data['date_of_birth'])
     ) {
         http_response_code(400);
         echo json_encode(['error' => 'All fields are required.']);
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($data['username']);
     $email = trim($data['email']);
     $password = trim($data['password']);
-    $dateOfBirth = trim($data['dateOfBirth']);
+    $date_of_birth = trim($data['date_of_birth']);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
-        $stmt->bindParam(':date_of_birth', $dateOfBirth);
+        $stmt->bindParam(':date_of_birth', $date_of_birth);
 
         if ($stmt->execute()) {
             http_response_code(201);

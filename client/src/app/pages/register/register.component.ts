@@ -27,7 +27,7 @@ export class RegisterComponent {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
-        dateOfBirth: ['', [Validators.required]],
+        date_of_birth: ['', [Validators.required]],
       },
       { validator: this.passwordMatchValidator }
     );
@@ -43,8 +43,15 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       console.log('Form Submitted!', this.registerForm.value);
       const user = new User(this.registerForm.value);
-
-      this.usersService.register(user);
+      console.log('Date of Birth:', this.registerForm.value.dateOfBirth);
+      this.usersService.register(user).subscribe(
+        (response) => {
+          console.log('Registration successful', response);
+        },
+        (error) => {
+          console.error('Registration failed', error);
+        }
+      );
     }
   }
 }
