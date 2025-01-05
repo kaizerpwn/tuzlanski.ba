@@ -1,5 +1,6 @@
 <?php
 
+header('Content-Type: application/json');
 include_once('../../config/CORS.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         empty($data['date_of_birth'])
     ) {
         http_response_code(400);
-        echo json_encode(['error' => 'All fields are required.']);
+        echo json_encode(['error' => 'Morate ispuniti sva polja.']);
         exit;
     }
 
@@ -25,19 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo json_encode(['error' => 'Invalid email address.']);
+        echo json_encode(['error' => 'Email adresa nije validna.']);
         exit;
     }
 
     if (strlen($username) < 3) {
         http_response_code(400);
-        echo json_encode(['error' => 'Username must be at least 3 characters long.']);
+        echo json_encode(['error' => 'Korisničko ime mora imati minimalno 3 karaktera.']);
         exit;
     }
 
     if (strlen($password) < 6) {
         http_response_code(400);
-        echo json_encode(['error' => 'Password must be at least 6 characters long.']);
+        echo json_encode(['error' => 'Lozinka mora imati minimalno 6 karaktera.']);
         exit;
     }
 
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($existingUser) {
             http_response_code(409);
-            echo json_encode(['error' => 'A user with this email already exists.']);
+            echo json_encode(['error' => 'Već postoji korisnik sa ovakvim emailom.']);
             exit;
         }
 
@@ -66,16 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             http_response_code(201);
-            echo json_encode(['message' => 'User registered successfully.']);
+            echo json_encode(['message' => 'Uspješno ste se registrovali.']);
         } else {
             http_response_code(500);
-            echo json_encode(['error' => 'Failed to register user.']);
+            echo json_encode(['error' => 'Došlo je do greške prilikom registracije.']);
         }
     } catch (PDOException $e) {
         http_response_code(500);
-        echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
+        echo json_encode(['error' => 'Greška na serveru: ' . $e->getMessage()]);
     }
 } else {
     http_response_code(405);
-    echo json_encode(['error' => 'Method not allowed.']);
+    echo json_encode(['error' => 'Metoda nije dozvoljena.']);
 }
