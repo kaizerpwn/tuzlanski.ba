@@ -19,6 +19,9 @@
 }
 
 .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 12px 15px;
   margin-bottom: 5px;
   cursor: pointer;
@@ -56,7 +59,14 @@
   font-size: 16px;
   background-color: #e91e63;
   color: white;
-  transition: opacity 0.3s;
+  transition: 0.2s ease-in;
   margin-bottom: 10px;
   font-weight: bold;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.add-news-btn:hover {
+  background-color: rgb(250, 37, 108);
 }

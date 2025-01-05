@@ -63,11 +63,17 @@
 }
 
 .btn-edit {
+  display: flex;
+  gap: 5px;
+  align-items: center;
   background-color: #2196f3;
   color: white;
 }
 
 .btn-delete {
+  display: flex;
+  gap: 5px;
+  align-items: center;
   background-color: #f44336;
   color: white;
 }
