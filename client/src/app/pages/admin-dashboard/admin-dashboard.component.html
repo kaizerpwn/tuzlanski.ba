@@ -1,125 +1,18 @@
 <div class="container">
-  <!-- Sidebar -->
   <div class="sidebar">
-    <div class="nav-item">Dashboard</div>
+    <div class="nav-item">Nadzorna ploča</div>
     <div class="nav-item">Korisnici</div>
     <div class="nav-item">Novosti</div>
   </div>
 
-  <!-- Main Content -->
   <div class="main-content">
-    <!-- Analytics Cards -->
-    <div class="analytics-grid">
-      <div class="card">
-        <h3>Ukupno Korisnika</h3>
-        <p>1,234</p>
-      </div>
-      <div class="card">
-        <h3>Ukupno Novosti</h3>
-        <p>456</p>
-      </div>
-      <div class="card">
-        <h3>Današnje Objave</h3>
-        <p>25</p>
-      </div>
-    </div>
+    <app-analytics />
 
     <div class="flex">
       <p class="table-header-title">Novosti</p>
       <button class="add-news-btn">Dodaj novost</button>
     </div>
-    <!-- News Table -->
-    <table class="news-table">
-      <thead>
-        <tr>
-          <th>Thumbnail</th>
-          <th>Naslov</th>
-          <th>Kategorija</th>
-          <th>Status</th>
-          <th>Akcije</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <img
-              src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
-              alt="Thumbnail"
-              width="60"
-              height="60"
-              class="news-thumbnail"
-            />
-          </td>
-          <td>
-            <div class="news-title">
-              Najsočniji biskvit u kombinaciji s pudingom i šlagom
-            </div>
-            <div class="news-meta">Objavljeno: 05.01.2025</div>
-          </td>
-          <td>Recepti</td>
-          <td>
-            <span class="status-badge status-published">Objavljeno</span>
-          </td>
-          <td>
-            <div class="action-buttons">
-              <button class="btn btn-edit">Uredi</button>
-              <button class="btn btn-delete">Izbriši</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img
-              src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
-              alt="Thumbnail"
-              width="60"
-              height="60"
-              class="news-thumbnail"
-            />
-          </td>
-          <td>
-            <div class="news-title">Olmo dobio zanimljivu ponudu velikana</div>
-            <div class="news-meta">Objavljeno: 05.01.2025</div>
-          </td>
-          <td>Sport</td>
-          <td>
-            <span class="status-badge status-published">Objavljeno</span>
-          </td>
-          <td>
-            <div class="action-buttons">
-              <button class="btn btn-edit">Uredi</button>
-              <button class="btn btn-delete">Izbriši</button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img
-              src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
-              alt="Thumbnail"
-              width="60"
-              height="60"
-              class="news-thumbnail"
-            />
-          </td>
-          <td>
-            <div class="news-title">
-              Kerim Alajbegović sa 17 godina debitovao
-            </div>
-            <div class="news-meta">Objavljeno: 05.01.2025</div>
-          </td>
-          <td>Sport</td>
-          <td>
-            <span class="status-badge status-draft">U pripremi</span>
-          </td>
-          <td>
-            <div class="action-buttons">
-              <button class="btn btn-edit">Uredi</button>
-              <button class="btn btn-delete">Izbriši</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <app-news-table />
   </div>
 </div>

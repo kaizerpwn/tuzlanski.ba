@@ -1,0 +1,30 @@
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #172132;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.flex {
+  display: flex;
+  gap: 20px;
+}

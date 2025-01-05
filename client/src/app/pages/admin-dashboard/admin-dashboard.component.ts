@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { NewsTableComponent } from '../../components/news-table/news-table.component';
+import { AnalyticsComponent } from '../../components/analytics/analytics.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [],
+  imports: [NewsTableComponent, AnalyticsComponent],
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css'
+  styleUrl: './admin-dashboard.component.css',
 })
-export class AdminDashboardComponent {
-
-}
+export class AdminDashboardComponent {}
