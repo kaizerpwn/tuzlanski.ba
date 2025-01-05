@@ -28,7 +28,7 @@ import {
 })
 export class HomeComponent {
   data: { [key: string]: Article[] } = {};
-  latest_articles: Article[] = [];
+  latestArticles: Article[] = [];
 
   ALL_CATEGORIES = CATEGORIES;
   findMostUsedSubCategories = findMostUsedSubCategories;
@@ -41,7 +41,7 @@ export class HomeComponent {
 
   private loadLatestArticles(): void {
     this.newsService.getNews('', 7).subscribe((data: any) => {
-      this.latest_articles = data.map(
+      this.latestArticles = data.map(
         (item: any) =>
           new Article(
             item.id,

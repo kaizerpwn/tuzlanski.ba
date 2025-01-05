@@ -1,6 +1,8 @@
 <img [src]="safeImageUrl" [alt]="imageSource" />
 <article class="main-news-content">
-  <div class="main-news-category">{{ firstSubCategory }}</div>
+  <div class="main-news-category" [style.color]="color">
+    {{ firstSubCategory }}
+  </div>
   <h3 class="main-news-title">
     {{ title }}
   </h3>
