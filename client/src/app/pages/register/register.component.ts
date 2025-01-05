@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { UsersService } from '../../services/users.service';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,7 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private usersService: UsersService) {
     this.registerForm = this.fb.group(
       {
         username: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,6 +42,9 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       console.log('Form Submitted!', this.registerForm.value);
+      const user = new User(this.registerForm.value);
+
+      this.usersService.register(user);
     }
   }
 }

@@ -11,12 +11,14 @@ export class NewsService {
 
   getNews(category?: string, size?: number) {
     const params: any = {};
+
     if (category) {
       params.category = category;
     }
     if (size) {
       params.size = size.toString();
     }
+
     return this.http.get(`${API_URL}/News/GetAllNews.controller.php`, {
       params,
     });
