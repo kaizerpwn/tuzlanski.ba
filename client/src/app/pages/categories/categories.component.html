@@ -1,1 +1,40 @@
-<p>categories works!</p>
+<div class="news-container">
+  <div class="main-news">
+    <app-big-news-card
+      [title]="latestArticles[0].getTitle()"
+      [thumbnail]="latestArticles[0].getThumbnail()"
+      [imageSource]="latestArticles[0].getImageSource()"
+      [publishedAt]="latestArticles[0].getPublishedAt()"
+      [categoryName]="latestArticles[0].getSubCategories()"
+      [color]="findColorForCategory(latestArticles[0].getCategory())"
+    />
+  </div>
+  <app-side-news-list [articles]="latestArticles.slice(1, 3)" />
+  <app-sidebar></app-sidebar>
+</div>
+
+<div class="horizontal-news-list">
+  @for (newsItem of latestArticles.slice(3); track $index) {
+  <app-small-news-card
+    [title]="newsItem.getTitle()"
+    [thumbnail]="newsItem.getThumbnail()"
+    [imageSource]="newsItem.getImageSource()"
+    [publishedAt]="newsItem.getPublishedAt()"
+    [categoryName]="newsItem.getSubCategories()"
+    [color]="findColorForCategory(newsItem.getCategory())"
+  />
+  }
+</div>
+
+<div class="horizontal-news-list">
+  @for (newsItem of data; track $index) {
+  <app-small-news-card
+    [title]="newsItem.getTitle()"
+    [thumbnail]="newsItem.getThumbnail()"
+    [imageSource]="newsItem.getImageSource()"
+    [publishedAt]="newsItem.getPublishedAt()"
+    [categoryName]="newsItem.getSubCategories()"
+    [color]="findColorForCategory(newsItem.getCategory())"
+  />
+  }
+</div>
