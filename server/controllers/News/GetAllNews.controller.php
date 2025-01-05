@@ -4,12 +4,27 @@ include_once('../../config/CORS.php');
 include_once('../../database/Database.php');
 
 $category = isset($_GET['category']) ? $_GET['category'] : null;
+$size = isset($_GET['size']) ? (int)$_GET['size'] : null;
 
 if ($category) {
-    $getAllNews = $db->prepare('SELECT * FROM articles WHERE category = :category ORDER BY id DESC');
+    $query = 'SELECT * FROM articles WHERE category = :category ORDER BY id DESC';
+    if ($size) {
+        $query .= ' LIMIT :size';
+    }
+    $getAllNews = $db->prepare($query);
     $getAllNews->bindParam(':category', $category, PDO::PARAM_STR);
+    if ($size) {
+        $getAllNews->bindParam(':size', $size, PDO::PARAM_INT);
+    }
 } else {
-    $getAllNews = $db->prepare('SELECT * FROM articles');
+    $query = 'SELECT * FROM articles';
+    if ($size) {
+        $query .= ' LIMIT :size';
+    }
+    $getAllNews = $db->prepare($query);
+    if ($size) {
+        $getAllNews->bindParam(':size', $size, PDO::PARAM_INT);
+    }
 }
 
 $getAllNews->execute();

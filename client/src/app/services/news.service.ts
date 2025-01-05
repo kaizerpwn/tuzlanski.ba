@@ -9,14 +9,23 @@ import { CATEGORIES } from '../utils/constants';
 export class NewsService {
   constructor(private http: HttpClient) {}
 
-  getNews(category?: string) {
+  getNews(category?: string, size?: number) {
+    const params: any = {};
+    if (category) {
+      params.category = category;
+    }
+    if (size) {
+      params.size = size.toString();
+    }
     return this.http.get(`${API_URL}/News/GetAllNews.controller.php`, {
-      params: category ? { category } : {},
+      params,
     });
   }
 
   getAllCategoriesNews() {
-    const requests = CATEGORIES.map((category) => this.getNews(category.name));
+    const requests = CATEGORIES.map((category) =>
+      this.getNews(category.name, 4)
+    );
     return requests;
   }
 }
