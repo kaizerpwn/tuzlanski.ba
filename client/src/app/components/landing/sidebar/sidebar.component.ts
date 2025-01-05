@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NewsService } from '../../services/news.service';
-import { Article } from '../../models/Article';
+import { NewsService } from '../../../services/news.service';
+import { Article } from '../../../models/Article';
 import {
   exportFirstSubCategory,
   findColorForCategory,
   formatTimeAgo,
-} from '../../utils/helpers';
+} from '../../../utils/helpers';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { SmallNewsCardComponent } from '../small-news-card/small-news-card.component';
-import { Article } from '../../models/Article';
-import { CATEGORIES } from '../../utils/constants';
-import { findColorForCategory } from '../../utils/helpers';
+import { Article } from '../../../models/Article';
+import { CATEGORIES } from '../../../utils/constants';
+import { findColorForCategory } from '../../../utils/helpers';
 @Component({
   selector: 'app-side-news-list',
   standalone: true,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CATEGORIES } from '../../utils/constants';
+import { CATEGORIES } from '../../../utils/constants';
 import { RouterLink } from '@angular/router';
 
 @Component({

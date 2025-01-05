@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { NewsTableComponent } from '../../components/news-table/news-table.component';
-import { AnalyticsComponent } from '../../components/analytics/analytics.component';
+import { NewsTableComponent } from '../../components/admin/news-table/news-table.component';
+import { AnalyticsComponent } from '../../components/admin/analytics/analytics.component';
 
 @Component({
   selector: 'app-admin-dashboard',

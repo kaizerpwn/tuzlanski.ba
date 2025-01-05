@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { forkJoin } from 'rxjs';
 import { CATEGORIES } from '../../utils/constants';
-import { BigNewsCardComponent } from '../../components/big-news-card/big-news-card.component';
-import { SideNewsListComponent } from '../../components/side-news-list/side-news-list.component';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { SmallNewsCardComponent } from '../../components/small-news-card/small-news-card.component';
-import { CategoryNavComponent } from '../../components/category-nav/category-nav.component';
+import { BigNewsCardComponent } from '../../components/landing/big-news-card/big-news-card.component';
+import { SideNewsListComponent } from '../../components/landing/side-news-list/side-news-list.component';
+import { SidebarComponent } from '../../components/landing/sidebar/sidebar.component';
+import { SmallNewsCardComponent } from '../../components/landing/small-news-card/small-news-card.component';
+import { CategoryNavComponent } from '../../components/landing/category-nav/category-nav.component';
 import { Article } from '../../models/Article';
 import {
   findColorForCategory,

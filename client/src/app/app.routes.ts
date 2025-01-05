@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 
 export const routes: Routes = [
   {
@@ -22,8 +23,13 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+
   {
     path: 'admin',
     component: AdminDashboardComponent,
+  },
+  {
+    path: 'admin/news',
+    component: AdminNewsComponent,
   },
 ];

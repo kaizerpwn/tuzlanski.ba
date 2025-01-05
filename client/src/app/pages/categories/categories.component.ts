@@ -7,10 +7,10 @@ import {
 } from '../../utils/helpers';
 import { NewsService } from '../../services/news.service';
 import { ActivatedRoute } from '@angular/router';
-import { BigNewsCardComponent } from '../../components/big-news-card/big-news-card.component';
-import { SmallNewsCardComponent } from '../../components/small-news-card/small-news-card.component';
-import { SideNewsListComponent } from '../../components/side-news-list/side-news-list.component';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { BigNewsCardComponent } from '../../components/landing/big-news-card/big-news-card.component';
+import { SmallNewsCardComponent } from '../../components/landing/small-news-card/small-news-card.component';
+import { SideNewsListComponent } from '../../components/landing/side-news-list/side-news-list.component';
+import { SidebarComponent } from '../../components/landing/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-categories',
