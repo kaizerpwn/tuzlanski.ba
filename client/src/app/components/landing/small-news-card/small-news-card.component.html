@@ -1,18 +1,13 @@
 <article class="article-item">
   <div class="image-container">
-    <a
-      href="https://tuzlanski.ba/vijesti/bih/radno-vrijeme-binga-tokom-novogodisnjih-praznika-evo-kako-ce-trgovine-raditi/983765"
-    >
+    <a routerLink="/news/{{ id }}">
       <img [src]="safeImageUrl" alt="{{ title }} - Source: {{ imageSource }}" />
     </a>
   </div>
   <div class="content">
     <span class="tag" [style.color]="color">{{ firstSubCategory }}</span>
     <h2 class="title">
-      <a
-        href="https://tuzlanski.ba/vijesti/bih/radno-vrijeme-binga-tokom-novogodisnjih-praznika-evo-kako-ce-trgovine-raditi/983765"
-        >{{ title }}</a
-      >
+      <a routerLink="/news/{{ id }}">{{ title }}</a>
     </h2>
     <time datetime="2024-12-30 20:12:00" class="time">{{ formattedTime }}</time>
   </div>

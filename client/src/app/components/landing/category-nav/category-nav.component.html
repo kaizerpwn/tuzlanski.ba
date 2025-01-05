@@ -6,7 +6,7 @@
     <div class="right">
       <ng-container *ngFor="let item of subCategories | slice : 0 : 3">
         <a
-          href="#"
+          routerLink="/category/{{ categoryName }}"
           class="category-link"
           [style.backgroundColor]="backgroundColor"
           [style.color]="color"
@@ -14,7 +14,7 @@
         >
       </ng-container>
       <a
-        href="#"
+        routerLink="/category/{{ categoryName }}"
         class="category-link more"
         [style.borderColor]="color"
         [style.color]="color"

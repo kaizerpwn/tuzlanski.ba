@@ -1,15 +1,17 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { exportFirstSubCategory, formatTimeAgo } from '../../../utils/helpers';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-small-news-card',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './small-news-card.component.html',
   styleUrls: ['./small-news-card.component.css'],
 })
 export class SmallNewsCardComponent implements OnChanges {
+  @Input() id!: number;
   @Input() title!: string;
   @Input() categoryName!: string;
   @Input() publishedAt!: string;

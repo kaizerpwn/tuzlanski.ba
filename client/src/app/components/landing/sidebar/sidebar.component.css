@@ -46,6 +46,8 @@
 }
 
 .title {
+  text-decoration: none;
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 8px;

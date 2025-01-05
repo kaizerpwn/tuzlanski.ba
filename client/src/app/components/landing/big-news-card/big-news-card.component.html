@@ -1,10 +1,12 @@
-<img [src]="safeImageUrl" [alt]="imageSource" />
-<article class="main-news-content">
-  <div class="main-news-category" [style.color]="color">
-    {{ firstSubCategory }}
-  </div>
-  <h3 class="main-news-title">
-    {{ title }}
-  </h3>
-  <div class="main-news-time">{{ formattedTime }}</div>
-</article>
+<a routerLink="/news/{{ id }}">
+  <img [src]="safeImageUrl" [alt]="imageSource" />
+  <article class="main-news-content">
+    <div class="main-news-category" [style.color]="color">
+      {{ firstSubCategory }}
+    </div>
+    <h3 class="main-news-title">
+      {{ title }}
+    </h3>
+    <div class="main-news-time">{{ formattedTime }}</div>
+  </article>
+</a>

@@ -1,6 +1,7 @@
 <div class="side-news">
   @for (newsItem of articles; track $index) {
   <app-small-news-card
+    [id]="newsItem.getId()"
     [title]="newsItem.getTitle()"
     [thumbnail]="newsItem.getThumbnail()"
     [imageSource]="newsItem.getImageSource()"

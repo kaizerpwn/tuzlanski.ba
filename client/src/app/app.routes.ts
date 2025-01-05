@@ -5,6 +5,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
+import { SingleNewsComponent } from './components/landing/single-news/single-news.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,10 @@ export const routes: Routes = [
   {
     path: 'category/:category',
     component: CategoriesComponent,
+  },
+  {
+    path: 'news/:id',
+    component: SingleNewsComponent,
   },
   {
     path: 'login',

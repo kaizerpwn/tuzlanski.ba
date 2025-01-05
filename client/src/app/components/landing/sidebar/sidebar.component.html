@@ -12,9 +12,9 @@
     >
       {{ exportFirstSubCategory(newsItem.getSubCategories()) }}
     </div>
-    <div class="title">
+    <a class="title" routerLink="/news/{{ newsItem.getId() }}">
       {{ newsItem.getTitle() }}
-    </div>
+    </a>
     <div class="timestamp">{{ formatTimeAgo(newsItem.getPublishedAt()) }}</div>
   </div>
   }
