@@ -5,7 +5,7 @@
   <ul class="navbar-menu">
     @for (item of navigationCategoryLinks; track $index) {
     <li>
-      <a href="#">{{ item.name }}</a>
+      <a routerLink="/category/{{ item.name }}">{{ item.name }}</a>
     </li>
     }
   </ul>
@@ -22,6 +22,6 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   @for (item of navigationCategoryLinks; track $index) {
-  <a href="#">{{ item.name }}</a>
+  <a routerLink="/category/{{ item.name }}">{{ item.name }}</a>
   }
 </div>

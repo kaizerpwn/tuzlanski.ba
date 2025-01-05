@@ -5,6 +5,7 @@ include_once('../../database/Database.php');
 
 $category = isset($_GET['category']) ? $_GET['category'] : null;
 $size = isset($_GET['size']) ? (int)$_GET['size'] : null;
+if ($category === 'Najnovije') $category = null;
 
 if ($category) {
     $query = 'SELECT * FROM articles WHERE category = :category ORDER BY id DESC';
