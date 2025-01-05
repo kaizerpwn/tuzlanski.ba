@@ -1,9 +1,10 @@
 <?php
 
+header('Content-Type: application/json');
 include_once('../../config/CORS.php');
-include_once('../../database/Database.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    include_once('../../database/Database.php');
     $category = isset($_GET['category']) ? $_GET['category'] : null;
     $size = isset($_GET['size']) ? (int)$_GET['size'] : null;
     if ($category === 'Najnovije') $category = null;
