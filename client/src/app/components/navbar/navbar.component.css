@@ -10,6 +10,9 @@ body {
   background-color: var(--background-color);
   padding: 25px 150px;
   border-bottom: 1px solid #ccd0d647;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar-logo {
