@@ -30,4 +30,10 @@ export class NewsService {
     );
     return requests;
   }
+
+  getNewsById(id: number) {
+    return this.http.get(`${API_URL}/News/GetNewsById.controller.php`, {
+      params: { id: id.toString() },
+    });
+  }
 }

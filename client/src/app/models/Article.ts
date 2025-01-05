@@ -157,4 +157,8 @@ export class Article {
   setPublishedAt(value: string): void {
     this.published_at = value;
   }
+
+  getParsedSubCategories(): string[] {
+    return JSON.parse(this.getSubCategories());
+  }
 }

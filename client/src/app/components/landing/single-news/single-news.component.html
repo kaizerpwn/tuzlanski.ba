@@ -1,15 +1,15 @@
 <div class="header-container">
   <div class="content-wrapper">
-    <div class="category-tag">Antiterorističke operacije</div>
+    <div class="category-tag">{{ article.getParsedSubCategories()[0] }}</div>
     <h1 class="headline">
-      Erdogan: Turska postigla značajan uspjeh, porazili smo ISIS
+      {{ article.getTitle() }}
     </h1>
     <div class="meta-info">
       <div class="author-tag">
-        <div class="author-avatar">A</div>
-        <span>Anadolija</span>
+        <div class="author-avatar">{{ article.getAuthor()[0] }}</div>
+        <span>{{ article.getAuthor() }}</span>
       </div>
-      <div class="timestamp">Prije oko 5h</div>
+      <div class="timestamp">{{ formatTimeAgo(article.getPublishedAt()) }}</div>
       <div class="comments">
         <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor">
           <path
@@ -26,62 +26,27 @@
     <div class="flex">
       <div class="content">
         <div class="article-highlight">
-          Erdogan je istakao da je Turska spriječila širenje terorističke grupe
-          PKK/YPG kod svoje granice, zahvaljujući antiterorističkim operacijama.
+          {{ article.getShortDescription() }}
         </div>
 
         <figure class="article-image">
           <img
-            src="https://static.klix.ba/media/images/vijesti/m11_250105088.jpg?v=1"
-            alt="Erdogan govori na konferenciji"
+            [src]="
+              this.sanitizer.bypassSecurityTrustUrl(article.getThumbnail())
+            "
+            alt="{{ article.getImageSource() }}"
           />
-          <figcaption>Foto: Anadolija | Turski predsjednik</figcaption>
+          <figcaption>{{ article.getImageSource() }}</figcaption>
         </figure>
 
-        <div class="article-content">
-          <p>
-            Turski predsjednik <strong>Recep Tayyip Erdogan</strong> izjavio je
-            u nedjelju da je Turska "bukvalno porazila" terorističku grupu ISIS,
-            "aparat za regionalne planove koji se danas pokušava ponovo
-            aktivirati".
-          </p>
-
-          <p>
-            "Turska je postigla značajan uspjeh u strategiji odlučne eliminacije
-            terorizma na njegovom izvoru", kazao je Erdogan u obraćanju na 8.
-            redovnom pokrajinskom kongresu AK Partije u provinciji Trabzon.
-          </p>
-
-          <p>
-            Istakao je da je Turska spriječila širenje terorističke grupe
-            PKK/YPG kod svoje granice, zahvaljujući antiterorističkim
-            operacijama.
-          </p>
-
-          <p>
-            "Nesumnjivo ćemo jedinstvom i solidarnošću postići naš cilj Turske
-            bez terorizma, gdje su sukobi, nasilje i nestabilnost u potpunosti
-            stvar prošlosti", dodao je Erdogan.
-          </p>
-
-          <p>
-            Poručio je da je okončana era oslanjanja na oružje, nasilje i
-            terorizam koji podržavaju imperijalisti.
-          </p>
-
-          <p>
-            "Nećemo dozvoliti da se podignu novi zidovi između nas i naše braće
-            i sestara sa kojima smo dijelili isto geografsko područje i živjeli
-            jedni pored drugih hiljadu godina", kazao je Erdogan.
-          </p>
-        </div>
+        <div class="article-content" [innerHTML]="content"></div>
 
         <div class="tags-section">
           <p class="tags-title">TAGOVI</p>
           <div class="tags-container">
-            <a href="#" class="tag">Recep Tayyip Erdogan</a>
-            <a href="#" class="tag">ISIS</a>
-            <a href="#" class="tag">Turska</a>
+            @for (item of article.getParsedSubCategories(); track $index) {
+            <a href="#" class="tag">{{ item }}</a>
+            }
           </div>
         </div>
 
@@ -101,6 +66,19 @@
 
         <div class="read-more-section">
           <h2 class="read-more-title">Pročitaj još</h2>
+        </div>
+        <div class="horizontal-items">
+          @for (newsItem of moreSimilarArticles; track $index) {
+          <app-small-news-card
+            [id]="newsItem.getId()"
+            [title]="newsItem.getTitle()"
+            [thumbnail]="newsItem.getThumbnail()"
+            [imageSource]="newsItem.getImageSource()"
+            [publishedAt]="newsItem.getPublishedAt()"
+            [categoryName]="newsItem.getSubCategories()"
+            [color]="findColorForCategory(newsItem.getCategory())"
+          />
+          }
         </div>
       </div>
 
