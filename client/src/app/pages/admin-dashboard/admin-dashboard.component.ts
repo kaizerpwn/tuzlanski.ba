@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { NewsTableComponent } from '../../components/admin/news-table/news-table.component';
 import { AnalyticsComponent } from '../../components/admin/analytics/analytics.component';
+import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admin-sidebar.component';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [NewsTableComponent, AnalyticsComponent, RouterLink],
+  imports: [NewsTableComponent, AnalyticsComponent, AdminSidebarComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css',
 })
-export class AdminDashboardComponent {
-  constructor(private router: Router, private route: ActivatedRoute) {}
-
-  isActive(route: string): boolean {
-    return this.router.url === route;
-  }
-}
+export class AdminDashboardComponent {}
