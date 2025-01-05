@@ -1,16 +1,29 @@
 <div class="news-container">
   <div class="main-news">
-    <app-big-news-card></app-big-news-card>
+    <app-big-news-card
+      [title]="latest_articles[0].getTitle()"
+      [thumbnail]="latest_articles[0].getThumbnail()"
+      [imageSource]="latest_articles[0].getImageSource()"
+      [publishedAt]="latest_articles[0].getPublishedAt()"
+      [categoryName]="latest_articles[0].getSubCategories()"
+      [color]="findColorForCategory(latest_articles[0].getCategory())"
+    />
   </div>
-  <app-side-news-list></app-side-news-list>
+  <app-side-news-list [articles]="latest_articles.slice(1, 3)" />
   <app-sidebar></app-sidebar>
 </div>
 
 <div class="horizontal-news-list">
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
+  @for (newsItem of latest_articles.slice(3); track $index) {
+  <app-small-news-card
+    [title]="newsItem.getTitle()"
+    [thumbnail]="newsItem.getThumbnail()"
+    [imageSource]="newsItem.getImageSource()"
+    [publishedAt]="newsItem.getPublishedAt()"
+    [categoryName]="newsItem.getSubCategories()"
+    [color]="findColorForCategory(newsItem.getCategory())"
+  />
+  }
 </div>
 
 @for (category of ALL_CATEGORIES; track $index) {

@@ -8,7 +8,10 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { SmallNewsCardComponent } from '../../components/small-news-card/small-news-card.component';
 import { CategoryNavComponent } from '../../components/category-nav/category-nav.component';
 import { Article } from '../../models/Article';
-import { findMostUsedSubCategories } from '../../utils/helpers';
+import {
+  findColorForCategory,
+  findMostUsedSubCategories,
+} from '../../utils/helpers';
 
 @Component({
   selector: 'app-home',
@@ -25,18 +28,45 @@ import { findMostUsedSubCategories } from '../../utils/helpers';
 })
 export class HomeComponent {
   data: { [key: string]: Article[] } = {};
+  latest_articles: Article[] = [];
+
   ALL_CATEGORIES = CATEGORIES;
   findMostUsedSubCategories = findMostUsedSubCategories;
+  findColorForCategory = findColorForCategory;
 
   constructor(private newsService: NewsService) {
+    this.loadLatestArticles();
     this.loadNewsByCategory();
+  }
+
+  private loadLatestArticles(): void {
+    this.newsService.getNews('', 7).subscribe((data: any) => {
+      this.latest_articles = data.map(
+        (item: any) =>
+          new Article(
+            item.id,
+            item.title,
+            item.thumbnail,
+            item.image_source,
+            item.images,
+            item.source_link,
+            item.category,
+            item.sub_categories,
+            item.short_description,
+            item.description,
+            item.keywords,
+            item.author,
+            item.language,
+            item.published_at
+          )
+      );
+    });
   }
 
   private loadNewsByCategory(): void {
     const requests = this.newsService.getAllCategoriesNews();
     forkJoin(requests).subscribe((data) => {
       this.data = this.mapNewsToCategories(data);
-      console.log(this.data);
     });
   }
 

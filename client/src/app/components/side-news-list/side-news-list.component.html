@@ -1,4 +1,12 @@
 <div class="side-news">
-  <app-small-news-card></app-small-news-card>
-  <app-small-news-card></app-small-news-card>
+  @for (newsItem of articles; track $index) {
+  <app-small-news-card
+    [title]="newsItem.getTitle()"
+    [thumbnail]="newsItem.getThumbnail()"
+    [imageSource]="newsItem.getImageSource()"
+    [publishedAt]="newsItem.getPublishedAt()"
+    [categoryName]="newsItem.getSubCategories()"
+    [color]="findColorForCategory(newsItem.getCategory())"
+  />
+  }
 </div>

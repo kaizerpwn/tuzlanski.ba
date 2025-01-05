@@ -1,4 +1,5 @@
 import { Article } from '../models/Article';
+import { CATEGORIES } from './constants';
 
 export const findMostUsedSubCategories = (articles: Article[]): string[] => {
   if (!articles || articles.length === 0) {
@@ -59,4 +60,9 @@ export const exportFirstSubCategory = (subCategories: string): string => {
     console.error('Error parsing sub-categories JSON:', error);
     return '';
   }
+};
+
+export const findColorForCategory = (name: string): string => {
+  const category = CATEGORIES.find((category) => category.name === name);
+  return category ? category.color : '';
 };

@@ -17,7 +17,7 @@ if ($category) {
         $getAllNews->bindParam(':size', $size, PDO::PARAM_INT);
     }
 } else {
-    $query = 'SELECT * FROM articles';
+    $query = 'SELECT * FROM articles ORDER BY id DESC';
     if ($size) {
         $query .= ' LIMIT :size';
     }
