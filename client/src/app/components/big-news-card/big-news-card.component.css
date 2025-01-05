@@ -9,7 +9,7 @@
 
 .main-news-category {
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: bold;
   color: var(--primary-color);
   text-transform: uppercase;
@@ -18,7 +18,7 @@
 
 .main-news-title {
   font-size: 22px;
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: bold;
   color: white;
   margin: 0;
@@ -27,7 +27,7 @@
 
 .main-news-time {
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #cfcfcf;
   margin-top: 10px;
 }
