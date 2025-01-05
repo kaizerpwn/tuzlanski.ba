@@ -32,6 +32,10 @@
   color: #fff;
 }
 
+.nav-item.active {
+  background-color: #e91e63;
+}
+
 .nav-item:hover {
   background-color: #e91e63;
 }
