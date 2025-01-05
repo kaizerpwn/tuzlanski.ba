@@ -35,6 +35,10 @@
 
 .news-title {
   font-weight: bold;
+  width: 400px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   color: #fff;
   margin-bottom: 5px;
 }

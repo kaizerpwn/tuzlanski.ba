@@ -9,10 +9,11 @@
     </tr>
   </thead>
   <tbody>
+    @for (item of news; track $index) {
     <tr>
       <td>
         <img
-          src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
+          [src]="sanitizer.bypassSecurityTrustUrl(item.getThumbnail())"
           alt="Thumbnail"
           width="60"
           height="60"
@@ -21,11 +22,11 @@
       </td>
       <td>
         <div class="news-title">
-          Najsočniji biskvit u kombinaciji s pudingom i šlagom
+          {{ item.getTitle() }}
         </div>
-        <div class="news-meta">Objavljeno: 05.01.2025</div>
+        <div class="news-meta">Objavljeno: {{ item.getPublishedAt() }}</div>
       </td>
-      <td>Recepti</td>
+      <td>{{ item.getCategory() }}</td>
       <td>
         <span class="status-badge status-published">Objavljeno</span>
       </td>
@@ -77,137 +78,6 @@
         </div>
       </td>
     </tr>
-    <tr>
-      <td>
-        <img
-          src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
-          alt="Thumbnail"
-          width="60"
-          height="60"
-          class="news-thumbnail"
-        />
-      </td>
-      <td>
-        <div class="news-title">Olmo dobio zanimljivu ponudu velikana</div>
-        <div class="news-meta">Objavljeno: 05.01.2025</div>
-      </td>
-      <td>Sport</td>
-      <td>
-        <span class="status-badge status-published">Objavljeno</span>
-      </td>
-      <td>
-        <div class="action-buttons">
-          <button class="btn btn-edit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-square-pen"
-            >
-              <path
-                d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
-              />
-              <path
-                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"
-              />
-            </svg>
-            Uredi
-          </button>
-          <button class="btn btn-delete">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-trash-2"
-            >
-              <path d="M3 6h18" />
-              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-              <line x1="10" x2="10" y1="11" y2="17" />
-              <line x1="14" x2="14" y1="11" y2="17" />
-            </svg>
-            Izbriši
-          </button>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img
-          src="https://static.klix.ba/media/images/vijesti/m11_250105082.jpg?v=1"
-          alt="Thumbnail"
-          width="60"
-          height="60"
-          class="news-thumbnail"
-        />
-      </td>
-      <td>
-        <div class="news-title">Kerim Alajbegović sa 17 godina debitovao</div>
-        <div class="news-meta">Objavljeno: 05.01.2025</div>
-      </td>
-      <td>Sport</td>
-      <td>
-        <span class="status-badge status-draft">U pripremi</span>
-      </td>
-      <td>
-        <div class="action-buttons">
-          <button class="btn btn-edit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-square-pen"
-            >
-              <path
-                d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
-              />
-              <path
-                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"
-              />
-            </svg>
-            Uredi
-          </button>
-          <button class="btn btn-delete">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-trash-2"
-            >
-              <path d="M3 6h18" />
-              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-              <line x1="10" x2="10" y1="11" y2="17" />
-              <line x1="14" x2="14" y1="11" y2="17" />
-            </svg>
-            Izbriši
-          </button>
-        </div>
-      </td>
-    </tr>
+    }
   </tbody>
 </table>
