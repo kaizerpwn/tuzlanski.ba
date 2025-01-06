@@ -1,25 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Article } from '../../../models/Article';
 import { NewsService } from '../../../services/news.service';
 import { formatTimeAgo } from '../../../utils/helpers';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { NewsModalComponent } from '../news-create-modal/news-create-modal.component';
+import { EventService } from '../../../services/event.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-news-table',
   standalone: true,
   imports: [],
   templateUrl: './news-table.component.html',
-  styleUrl: './news-table.component.css',
+  styleUrls: ['./news-table.component.css'],
 })
-export class NewsTableComponent {
+export class NewsTableComponent implements OnInit, OnDestroy {
   news: Article[] = [];
+  private newsAddedSubscription!: Subscription;
 
   formatTimeAgo = formatTimeAgo;
 
   constructor(
     private newsService: NewsService,
-    protected sanitizer: DomSanitizer
-  ) {
+    private eventService: EventService,
+    protected sanitizer: DomSanitizer,
+    private dialog: MatDialog
+  ) {}
+
+  ngOnInit() {
+    this.fetchNews();
+    this.newsAddedSubscription = this.eventService.newsAdded$.subscribe(() => {
+      this.fetchNews();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.newsAddedSubscription) {
+      this.newsAddedSubscription.unsubscribe();
+    }
+  }
+
+  fetchNews() {
     this.newsService.getNews().subscribe((data: any) => {
       this.news = data.map(
         (item: any) =>
@@ -41,6 +63,10 @@ export class NewsTableComponent {
           )
       );
     });
+  }
+
+  openCreateNewsModal() {
+    this.dialog.open(NewsModalComponent);
   }
 
   protected deleteNews(id: number) {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from '../environment';
 import { CATEGORIES } from '../utils/constants';
+import { Article } from '../models/Article';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,12 @@ export class NewsService {
     return this.http.delete(`${API_URL}/News/DeleteNews.controller.php`, {
       params: { id: id.toString() },
     });
+  }
+
+  createNews(formData: FormData) {
+    return this.http.post(
+      `${API_URL}/News/CreateNews.controller.php`,
+      formData
+    );
   }
 }

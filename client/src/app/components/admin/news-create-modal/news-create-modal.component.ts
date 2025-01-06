@@ -13,6 +13,8 @@ import {
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
 import { CATEGORIES } from '../../../utils/constants';
 import { CommonModule } from '@angular/common';
+import { NewsService } from '../../../services/news.service';
+import { EventService } from '../../../services/event.service';
 
 @Component({
   selector: 'app-news-modal',
@@ -42,6 +44,8 @@ export class NewsModalComponent {
   ];
 
   constructor(
+    private newsService: NewsService,
+    private eventService: EventService,
     private fb: FormBuilder,
     protected dialogRef: MatDialogRef<NewsModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -62,22 +66,42 @@ export class NewsModalComponent {
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
+      this.selectedFile = input.files[0];
+
       const reader = new FileReader();
       reader.onload = (e) => (this.previewUrl = e.target?.result as string);
-      reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 
   onSubmit() {
     if (this.newsForm.valid) {
-      const formData = {
-        ...this.newsForm.value,
-        subcategories: this.newsForm.value.subcategories
-          .split(',')
-          .map((s: string) => s.trim()),
-        thumbnail: this.selectedFile,
-      };
-      this.dialogRef.close(formData);
+      const formData = new FormData();
+      if (this.selectedFile) {
+        formData.append('thumbnail', this.selectedFile);
+      }
+      formData.append(
+        'data',
+        JSON.stringify({
+          ...this.newsForm.value,
+          subcategories: this.newsForm.value.subcategories
+            .split(',')
+            .map((s: string) => s.trim()),
+          keywords: this.newsForm.value.keywords
+            .split(',')
+            .map((k: string) => k.trim()),
+        })
+      );
+
+      this.newsService.createNews(formData).subscribe(
+        (response) => {
+          this.eventService.emitNewsAdded();
+          this.dialogRef.close(response);
+        },
+        (error) => {
+          console.error('Error creating news:', error);
+        }
+      );
     }
   }
 
