@@ -15,8 +15,8 @@
 </div>
 
 <div class="horizontal-news-list">
-  @for (newsItem of latestArticles.slice(3); track $index) {
   <app-small-news-card
+    *ngFor="let newsItem of latestArticles.slice(3); trackBy: trackById"
     [id]="newsItem.getId()"
     [title]="newsItem.getTitle()"
     [thumbnail]="newsItem.getThumbnail()"
@@ -24,13 +24,12 @@
     [publishedAt]="newsItem.getPublishedAt()"
     [categoryName]="newsItem.getSubCategories()"
     [color]="findColorForCategory(newsItem.getCategory())"
-  />
-  }
+  ></app-small-news-card>
 </div>
 
 <div class="horizontal-news-list">
-  @for (newsItem of data; track $index) {
   <app-small-news-card
+    *ngFor="let newsItem of data; trackBy: trackById"
     [id]="newsItem.getId()"
     [title]="newsItem.getTitle()"
     [thumbnail]="newsItem.getThumbnail()"
@@ -38,6 +37,13 @@
     [publishedAt]="newsItem.getPublishedAt()"
     [categoryName]="newsItem.getSubCategories()"
     [color]="findColorForCategory(newsItem.getCategory())"
-  />
-  }
+  ></app-small-news-card>
+</div>
+
+<div class="container">
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="onPageChange($event)"
+  ></app-pagination>
 </div>

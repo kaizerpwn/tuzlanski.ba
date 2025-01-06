@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Article } from '../../models/Article';
 import { CATEGORIES } from '../../utils/constants';
 import {
@@ -11,6 +11,8 @@ import { BigNewsCardComponent } from '../../components/landing/big-news-card/big
 import { SmallNewsCardComponent } from '../../components/landing/small-news-card/small-news-card.component';
 import { SideNewsListComponent } from '../../components/landing/side-news-list/side-news-list.component';
 import { SidebarComponent } from '../../components/landing/sidebar/sidebar.component';
+import { PaginationComponent } from '../../components/shared/pagination/pagination.component';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-categories',
@@ -20,14 +22,18 @@ import { SidebarComponent } from '../../components/landing/sidebar/sidebar.compo
     SmallNewsCardComponent,
     SideNewsListComponent,
     SidebarComponent,
+    PaginationComponent,
+    NgFor,
   ],
   templateUrl: './categories.component.html',
-  styleUrl: './categories.component.css',
+  styleUrls: ['./categories.component.css'],
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit {
   data: Article[] = [];
   latestArticles: Article[] = [];
   category: string = '';
+  currentPage: number = 1;
+  totalPages: number = 1;
 
   ALL_CATEGORIES = CATEGORIES;
   findMostUsedSubCategories = findMostUsedSubCategories;
@@ -47,8 +53,12 @@ export class CategoriesComponent {
     });
   }
 
-  private loadLatestArticles(): void {
-    this.newsService.getNews(this.category, 100, 1).subscribe((data: any) => {
+  trackById(index: number, item: Article): number {
+    return item.getId();
+  }
+
+  private loadLatestArticles(page: number = 1): void {
+    this.newsService.getNews(this.category, 20, page).subscribe((data: any) => {
       this.latestArticles = data.items.map(
         (item: any) =>
           new Article(
@@ -68,6 +78,12 @@ export class CategoriesComponent {
             item.published_at
           )
       );
+      this.currentPage = data.currentPage;
+      this.totalPages = data.totalPages;
     });
+  }
+
+  onPageChange(page: number): void {
+    this.loadLatestArticles(page);
   }
 }

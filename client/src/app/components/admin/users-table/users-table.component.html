@@ -33,7 +33,13 @@
       </td>
       <td>{{ item.getEmail() }}</td>
       <td>
-        <span class="status-badge status-published">Objavljeno</span>
+        <span
+          class="status-badge status-published"
+          [style.backgroundColor]="
+            item.getRole() === 'admin' ? '#e91e63' : '#4caf50'
+          "
+          >{{ item.getRole() }}</span
+        >
       </td>
       <td>{{ item.getDateOfBirth() }}</td>
       <td>
