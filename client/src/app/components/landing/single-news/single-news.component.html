@@ -1,6 +1,11 @@
 <div class="header-container">
   <div class="content-wrapper">
-    <div class="category-tag">{{ article.getParsedSubCategories()[0] }}</div>
+    <div
+      class="category-tag"
+      [style.color]="findColorForCategory(article.getCategory())"
+    >
+      {{ article.getParsedSubCategories()[0] }}
+    </div>
     <h1 class="headline">
       {{ article.getTitle() }}
     </h1>
@@ -41,17 +46,37 @@
 
         <div class="article-content" [innerHTML]="content"></div>
 
-        <div class="tags-section">
+        <div
+          class="tags-section"
+          [style.borderTop]="
+            '1px solid' + findColorForCategory(article.getCategory())
+          "
+        >
           <p class="tags-title">TAGOVI</p>
           <div class="tags-container">
             @for (item of article.getParsedSubCategories(); track $index) {
-            <a href="#" class="tag">{{ item }}</a>
+            <a
+              href="#"
+              class="tag"
+              [style.color]="findColorForCategory(article.getCategory())"
+              [style.backgroundColor]="
+                findBackgroundColorForCategory(article.getCategory())
+              "
+              >{{ item }}</a
+            >
             }
           </div>
         </div>
 
         <div class="comment-section">
-          <a href="#" class="comment-button">
+          <a
+            href="#"
+            class="comment-button"
+            [style.border]="
+              '2px solid' + findColorForCategory(article.getCategory())
+            "
+            [style.color]="findColorForCategory(article.getCategory())"
+          >
             Ostavi komentar
             <svg
               viewBox="0 0 24 24"
@@ -64,8 +89,18 @@
           </a>
         </div>
 
-        <div class="read-more-section">
-          <h2 class="read-more-title">Pročitaj još</h2>
+        <div
+          class="read-more-section"
+          [style.borderBottom]="
+            '1px solid' + findColorForCategory(article.getCategory())
+          "
+        >
+          <h2
+            class="read-more-title"
+            [style.color]="findColorForCategory(article.getCategory())"
+          >
+            Pročitaj još
+          </h2>
         </div>
         <div class="horizontal-items">
           @for (newsItem of moreSimilarArticles; track $index) {

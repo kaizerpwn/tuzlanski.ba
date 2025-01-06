@@ -4,8 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Article } from '../../../models/Article';
 import { NewsService } from '../../../services/news.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { findColorForCategory, formatTimeAgo } from '../../../utils/helpers';
+import {
+  findBackgroundColorForCategory,
+  findColorForCategory,
+  formatTimeAgo,
+} from '../../../utils/helpers';
 import { SmallNewsCardComponent } from '../small-news-card/small-news-card.component';
+import { CATEGORIES } from '../../../utils/constants';
 
 @Component({
   selector: 'app-single-news',
@@ -23,6 +28,8 @@ export class SingleNewsComponent {
 
   formatTimeAgo = formatTimeAgo;
   findColorForCategory = findColorForCategory;
+  findBackgroundColorForCategory = findBackgroundColorForCategory;
+  ALL_CATEGORIES = CATEGORIES;
 
   constructor(
     private route: ActivatedRoute,

@@ -66,3 +66,8 @@ export const findColorForCategory = (name: string): string => {
   const category = CATEGORIES.find((category) => category.name === name);
   return category ? category.color : '';
 };
+
+export const findBackgroundColorForCategory = (name: string): string => {
+  const category = CATEGORIES.find((category) => category.name === name);
+  return category ? category.backgroundColor : '';
+};
