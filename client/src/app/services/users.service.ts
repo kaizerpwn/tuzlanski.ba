@@ -24,4 +24,10 @@ export class UsersService {
   getAllUsers() {
     return this.http.get(`${API_URL}/Users/GetAllUsers.controller.php`);
   }
+
+  deleteUser(id: number) {
+    return this.http.delete(
+      `${API_URL}/Users/DeleteUser.controller.php?id=${id}`
+    );
+  }
 }

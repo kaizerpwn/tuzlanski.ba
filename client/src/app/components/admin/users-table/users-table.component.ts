@@ -39,4 +39,10 @@ export class UsersTableComponent {
       );
     });
   }
+
+  protected deleteUser(id: number) {
+    this.usersService.deleteUser(id).subscribe(() => {
+      this.fetchUsers();
+    });
+  }
 }
