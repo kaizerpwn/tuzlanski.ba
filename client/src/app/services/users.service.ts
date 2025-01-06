@@ -20,4 +20,8 @@ export class UsersService {
     console.log('test');
     return this.http.post(`${API_URL}/Users/Register.controller.php`, data);
   }
+
+  getAllUsers() {
+    return this.http.get(`${API_URL}/Users/GetAllUsers.controller.php`);
+  }
 }

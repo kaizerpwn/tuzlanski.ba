@@ -6,6 +6,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { AdminNewsComponent } from './pages/admin-news/admin-news.component';
 import { SingleNewsComponent } from './components/landing/single-news/single-news.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +37,9 @@ export const routes: Routes = [
   {
     path: 'admin/news',
     component: AdminNewsComponent,
+  },
+  {
+    path: 'admin/users',
+    component: AdminUsersComponent,
   },
 ];
