@@ -1,21 +1,52 @@
-<nav class="pagination-nav">
-  <a href="#" class="btn prev">← PRETHODNA</a>
+<nav class="pagination-nav" aria-label="Pagination">
+  <button
+    class="btn prev"
+    [disabled]="currentPage === 1"
+    (click)="changePage(currentPage - 1)"
+    aria-label="Previous Page"
+  >
+    ← PRETHODNA
+  </button>
 
   <div class="pages">
-    <a href="#" class="page active">1</a>
-    <a href="#" class="page">2</a>
-    <a href="#" class="page">3</a>
-    <a href="#" class="page">4</a>
-    <a href="#" class="page">5</a>
-    <a href="#" class="page">6</a>
-    <a href="#" class="page">7</a>
-    <a href="#" class="page">8</a>
-    <a href="#" class="page">9</a>
-    <a href="#" class="page">10</a>
-    <span class="ellipsis">...</span>
-    <a href="#" class="page">10726</a>
-    <a href="#" class="page">10727</a>
+    <button
+      *ngIf="!displayedPages.includes(1)"
+      class="page"
+      [class.active]="1 === currentPage"
+      (click)="changePage(1)"
+    >
+      1
+    </button>
+
+    <span *ngIf="shouldShowStartEllipsis" class="ellipsis">...</span>
+
+    <button
+      *ngFor="let page of displayedPages"
+      class="page"
+      [class.active]="page === currentPage"
+      (click)="changePage(page)"
+    >
+      {{ page }}
+    </button>
+
+    <span *ngIf="shouldShowEndEllipsis" class="ellipsis">...</span>
+
+    <button
+      class="page"
+      *ngIf="!displayedPages.includes(totalPages)"
+      [class.active]="totalPages === currentPage"
+      (click)="changePage(totalPages)"
+    >
+      {{ totalPages }}
+    </button>
   </div>
 
-  <a href="#" class="btn next">NAREDNA →</a>
+  <button
+    class="btn next"
+    [disabled]="currentPage === totalPages"
+    (click)="changePage(currentPage + 1)"
+    aria-label="Next Page"
+  >
+    NAREDNA →
+  </button>
 </nav>

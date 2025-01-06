@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Article } from '../../../models/Article';
 import { NewsService } from '../../../services/news.service';
-import { formatTimeAgo } from '../../../utils/helpers';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { NewsModalComponent } from '../news-create-modal/news-create-modal.component';
@@ -9,19 +8,19 @@ import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
 import { NewsEditModalComponent } from '../news-edit-modal/news-edit-modal.component';
 import { PaginationComponent } from '../../shared/pagination/pagination.component';
-
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-news-table',
   standalone: true,
-  imports: [PaginationComponent],
+  imports: [PaginationComponent, NgFor],
   templateUrl: './news-table.component.html',
   styleUrls: ['./news-table.component.css'],
 })
 export class NewsTableComponent implements OnInit, OnDestroy {
   news: Article[] = [];
+  currentPage: number = 1;
+  totalPages: number = 1;
   private newsAddedSubscription!: Subscription;
-
-  formatTimeAgo = formatTimeAgo;
 
   constructor(
     private newsService: NewsService,
@@ -43,9 +42,9 @@ export class NewsTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  fetchNews() {
-    this.newsService.getNews().subscribe((data: any) => {
-      this.news = data.map(
+  fetchNews(page: number = 1) {
+    this.newsService.getNews(undefined, 10, page).subscribe((response: any) => {
+      this.news = response.items.map(
         (item: any) =>
           new Article(
             item.id,
@@ -64,7 +63,13 @@ export class NewsTableComponent implements OnInit, OnDestroy {
             item.published_at
           )
       );
+      this.currentPage = response.currentPage;
+      this.totalPages = response.totalPages;
     });
+  }
+
+  onPageChange(page: number) {
+    this.fetchNews(page);
   }
 
   openCreateNewsModal() {
@@ -72,14 +77,13 @@ export class NewsTableComponent implements OnInit, OnDestroy {
   }
 
   openEditNewsModal(news: Article) {
-    this.dialog.open(NewsEditModalComponent, {
-      data: news,
-    });
+    this.dialog.open(NewsEditModalComponent, { data: news });
   }
 
   protected deleteNews(id: number) {
-    this.newsService.deleteNews(id).subscribe((data: any) => {
+    this.newsService.deleteNews(id).subscribe(() => {
       this.news = this.news.filter((item) => item.getId() !== id);
+      this.fetchNews(this.currentPage);
     });
   }
 }

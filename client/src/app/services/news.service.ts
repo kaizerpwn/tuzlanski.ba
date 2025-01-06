@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_URL } from '../environment';
 import { CATEGORIES } from '../utils/constants';
-import { Article } from '../models/Article';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +9,11 @@ import { Article } from '../models/Article';
 export class NewsService {
   constructor(private http: HttpClient) {}
 
-  getNews(category?: string, size?: number) {
-    const params: any = {};
+  getNews(category?: string, size: number = 10, page: number = 1) {
+    const params: any = { size: size.toString(), page: page.toString() };
 
     if (category) {
       params.category = category;
-    }
-    if (size) {
-      params.size = size.toString();
     }
 
     return this.http.get(`${API_URL}/News/GetAllNews.controller.php`, {
