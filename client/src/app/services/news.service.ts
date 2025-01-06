@@ -36,4 +36,10 @@ export class NewsService {
       params: { id: id.toString() },
     });
   }
+
+  deleteNews(id: number) {
+    return this.http.delete(`${API_URL}/News/DeleteNews.controller.php`, {
+      params: { id: id.toString() },
+    });
+  }
 }

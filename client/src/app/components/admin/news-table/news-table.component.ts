@@ -42,4 +42,10 @@ export class NewsTableComponent {
       );
     });
   }
+
+  protected deleteNews(id: number) {
+    this.newsService.deleteNews(id).subscribe((data: any) => {
+      this.news = this.news.filter((item) => item.getId() !== id);
+    });
+  }
 }

@@ -17,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
             $deleteNews->bindParam(':id', $id, PDO::PARAM_INT);
             $deleteNews->execute();
 
-            echo json_encode(['message' => 'News deleted successfully']);
+            echo json_encode(['message' => 'Uspješno ste obrisali vijest.']);
         } else {
             http_response_code(404);
-            echo json_encode(['message' => 'News not found']);
+            echo json_encode(['message' => 'Vijest nije pronađena.']);
         }
     } else {
         http_response_code(400);
-        echo json_encode(['message' => 'Invalid ID']);
+        echo json_encode(['message' => 'Niste poslali ispravne podatke.']);
     }
 }
