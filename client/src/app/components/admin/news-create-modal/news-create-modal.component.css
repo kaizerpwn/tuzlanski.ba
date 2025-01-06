@@ -7,6 +7,7 @@
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   z-index: 999;
+  overflow: auto;
 }
 
 .modal-container {
@@ -20,6 +21,7 @@
   font-family: Montserrat, sans-serif;
   z-index: 1000;
   margin: 0 auto;
+  overflow-y: auto;
 }
 
 .modal-title {
