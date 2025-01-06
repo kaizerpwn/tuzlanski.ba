@@ -40,8 +40,8 @@ export class HomeComponent {
   }
 
   private loadLatestArticles(): void {
-    this.newsService.getNews('', 7).subscribe((data: any) => {
-      this.latestArticles = data.map(
+    this.newsService.getNews(undefined, 7, 1).subscribe((data: any) => {
+      this.latestArticles = data.items.map(
         (item: any) =>
           new Article(
             item.id,
@@ -73,7 +73,7 @@ export class HomeComponent {
   private mapNewsToCategories(newsData: any[]): { [key: string]: Article[] } {
     return CATEGORIES.reduce(
       (acc: { [key: string]: Article[] }, category, index) => {
-        acc[category.name] = newsData[index].map(
+        acc[category.name] = newsData[index].items.map(
           (item: any) =>
             new Article(
               item.id,

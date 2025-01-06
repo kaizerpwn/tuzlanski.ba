@@ -28,7 +28,7 @@ export class SidebarComponent {
 
   private loadLatestArticles(): void {
     this.newsService.getNews('', 12).subscribe((data: any) => {
-      this.latestArticles = data.map(
+      this.latestArticles = data.items.map(
         (item: any) =>
           new Article(
             item.id,

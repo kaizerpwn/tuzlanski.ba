@@ -70,7 +70,7 @@ export class SingleNewsComponent {
           this.newsService
             .getNews(this.article.getCategory(), 10)
             .subscribe((data: any) => {
-              this.moreSimilarArticles = data.map(
+              this.moreSimilarArticles = data.items.map(
                 (article: any) =>
                   new Article(
                     article.id,

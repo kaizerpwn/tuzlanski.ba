@@ -48,8 +48,8 @@ export class CategoriesComponent {
   }
 
   private loadLatestArticles(): void {
-    this.newsService.getNews(this.category).subscribe((data: any) => {
-      this.latestArticles = data.map(
+    this.newsService.getNews(this.category, 100, 1).subscribe((data: any) => {
+      this.latestArticles = data.items.map(
         (item: any) =>
           new Article(
             item.id,
