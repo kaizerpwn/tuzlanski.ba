@@ -8,11 +8,12 @@ import { NewsModalComponent } from '../news-create-modal/news-create-modal.compo
 import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
 import { NewsEditModalComponent } from '../news-edit-modal/news-edit-modal.component';
+import { PaginationComponent } from '../../shared/pagination/pagination.component';
 
 @Component({
   selector: 'app-news-table',
   standalone: true,
-  imports: [],
+  imports: [PaginationComponent],
   templateUrl: './news-table.component.html',
   styleUrls: ['./news-table.component.css'],
 })
