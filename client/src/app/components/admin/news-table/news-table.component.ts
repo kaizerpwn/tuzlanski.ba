@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewsModalComponent } from '../news-create-modal/news-create-modal.component';
 import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
+import { NewsEditModalComponent } from '../news-edit-modal/news-edit-modal.component';
 
 @Component({
   selector: 'app-news-table',
@@ -67,6 +68,12 @@ export class NewsTableComponent implements OnInit, OnDestroy {
 
   openCreateNewsModal() {
     this.dialog.open(NewsModalComponent);
+  }
+
+  openEditNewsModal(news: Article) {
+    this.dialog.open(NewsEditModalComponent, {
+      data: news,
+    });
   }
 
   protected deleteNews(id: number) {

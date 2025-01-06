@@ -50,4 +50,11 @@ export class NewsService {
       formData
     );
   }
+
+  updateNews(formData: FormData) {
+    return this.http.post(
+      `${API_URL}/News/UpdateNews.controller.php`,
+      formData
+    );
+  }
 }

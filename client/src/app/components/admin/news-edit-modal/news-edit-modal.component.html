@@ -1,0 +1,157 @@
+<div class="modal-backdrop">
+  <div class="modal-container">
+    <h2 class="modal-title">Uredi vijest</h2>
+
+    <form [formGroup]="newsForm" (ngSubmit)="onSubmit()" class="news-form">
+      <div class="form-group">
+        <div class="thumbnail-container">
+          <div *ngIf="previewUrl; else filePlaceholder">
+            <div class="preview-container">
+              <img
+                [src]="
+                  sanitizer.bypassSecurityTrustUrl(
+                    previewUrl ? previewUrl.toString() : ''
+                  )
+                "
+                alt="Preview"
+                class="thumbnail-preview"
+                (click)="changeImage()"
+              />
+            </div>
+          </div>
+
+          <ng-template #filePlaceholder>
+            <label for="thumbnail" class="file-input">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 150 150"
+                class="placeholder-icon"
+              >
+                <rect
+                  x="0"
+                  y="0"
+                  width="150"
+                  height="150"
+                  fill="#2a2f3b"
+                  rx="8"
+                ></rect>
+                <text
+                  x="50%"
+                  y="50%"
+                  fill="#ffffff"
+                  dy=".3em"
+                  font-size="16"
+                  font-weight="bold"
+                  text-anchor="middle"
+                  font-family="Arial, sans-serif"
+                >
+                  Dodaj sliku
+                </text>
+              </svg>
+            </label>
+          </ng-template>
+
+          <input
+            type="file"
+            id="thumbnail"
+            #fileInput
+            (change)="onFileSelected($event)"
+            accept="image/*"
+            class="file-input-hidden"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Naslov</label>
+        <input
+          id="title"
+          type="text"
+          formControlName="title"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="category">Kategorija</label>
+        <select id="category" formControlName="category" class="form-control">
+          <option value="">Izaberi kategoriju</option>
+          <option *ngFor="let category of categories" [value]="category.name">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="subcategories">Dodatne kategorije (odvojene zarezom)</label>
+        <input
+          id="subcategories"
+          type="text"
+          formControlName="subcategories"
+          class="form-control"
+          placeholder="kuća, lifestyle, život"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="shortDescription">Kratki opis</label>
+        <input
+          id="shortDescription"
+          type="text"
+          formControlName="short_description"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Sadržaj</label>
+        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor
+          [editor]="editor"
+          [toolbar]="toolbar"
+          formControlName="description"
+          class="rich-text-editor"
+          placeholder="Unesite sadržaj"
+        >
+        </ngx-editor>
+      </div>
+
+      <div class="form-group">
+        <label for="keywords">Ključne riječi</label>
+        <input
+          id="keywords"
+          type="text"
+          formControlName="keywords"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="author">Autor</label>
+        <input
+          id="author"
+          type="text"
+          formControlName="author"
+          class="form-control"
+        />
+      </div>
+
+      <div class="button-group">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="dialogRef.close()"
+        >
+          Izlaz
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!newsForm.valid"
+        >
+          Uredi
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
