@@ -11,7 +11,12 @@
     </h1>
     <div class="meta-info">
       <div class="author-tag">
-        <div class="author-avatar">{{ article.getAuthor()[0] }}</div>
+        <div
+          class="author-avatar"
+          [style.backgroundColor]="findColorForCategory(article.getCategory())"
+        >
+          {{ article.getAuthor()[0] }}
+        </div>
         <span>{{ article.getAuthor() }}</span>
       </div>
       <div class="timestamp">{{ formatTimeAgo(article.getPublishedAt()) }}</div>
