@@ -8,25 +8,28 @@
 }
 
 .main-news-category {
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.45px;
   font-family: Montserrat, sans-serif;
-  font-weight: bold;
+  font-weight: 1000;
   color: var(--primary-color);
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 
 .main-news-title {
-  font-size: 22px;
+  font-size: 32px;
   font-family: Montserrat, sans-serif;
-  font-weight: bold;
+  font-weight: 1000;
   color: white;
   margin: 0;
-  line-height: 1.4;
+  line-height: 42px;
 }
 
 .main-news-time {
   font-size: 14px;
+  font-weight: bold;
   font-family: Montserrat, sans-serif;
   color: #cfcfcf;
   margin-top: 10px;

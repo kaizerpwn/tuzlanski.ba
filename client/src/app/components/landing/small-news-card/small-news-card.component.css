@@ -59,17 +59,19 @@
 
 .article-item .content .tag {
   text-transform: uppercase;
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 900;
+  line-height: 16px;
   letter-spacing: 0.45px;
+  font-size: 10px;
+  font-weight: 900;
   color: var(--primary-color);
   margin-bottom: 5px;
 }
 
 .article-item .content .title {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
+  line-height: 20px;
+  letter-spacing: normal;
   margin-bottom: 8px;
   color: white;
   text-decoration: none;
@@ -87,9 +89,10 @@
 }
 
 .article-item .content .time {
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: Montserrat, sans-serif;
+  letter-spacing: normal;
   color: #9199a4;
 }
 
