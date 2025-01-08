@@ -3,7 +3,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3));
+  background-image: linear-gradient(
+    0deg,
+    rgba(9, 20, 37, 0.97) 0%,
+    rgba(12, 22, 39, 0.83) 77%,
+    rgba(9, 15, 37, 0.57) 87%,
+    transparent
+  );
   padding: 20px;
 }
 
