@@ -24,6 +24,12 @@ The platform enables users to browse, search, and interact with news content thr
   </tr>
 </table>
 
+## 📰 Portal Preview
+![2025-01-0821-49-11-ezgif com-optimize (1)](https://github.com/user-attachments/assets/f60062ed-0cfa-4715-a92a-24202dc59e8d)
+
+## 🔗 Admin Dashboard Preview
+![22](https://github.com/user-attachments/assets/219ab2d0-4d5f-4917-bc75-b031ae312e0d)
+
 ## ⚙️ Project Setup
 
 To run the back-end and front-end code, please refer to the respective README files:
