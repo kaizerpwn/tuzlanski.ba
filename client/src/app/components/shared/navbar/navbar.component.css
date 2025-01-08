@@ -109,3 +109,14 @@ body {
     display: none;
   }
 }
+
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: var(--background-color);
+  top: 80px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+}
