@@ -17,7 +17,6 @@ export class UsersService {
   }
 
   register(data: User) {
-    console.log('test');
     return this.http.post(`${API_URL}/Users/Register.controller.php`, data);
   }
 
@@ -29,5 +28,13 @@ export class UsersService {
     return this.http.delete(
       `${API_URL}/Users/DeleteUser.controller.php?id=${id}`
     );
+  }
+
+  createUser(data: FormData) {
+    return this.http.post(`${API_URL}/Users/CreateUser.controller.php`, data);
+  }
+
+  updateUser(data: FormData) {
+    return this.http.put(`${API_URL}/Users/UpdateUser.controller.php`, data);
   }
 }

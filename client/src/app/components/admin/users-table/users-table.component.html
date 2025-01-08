@@ -44,7 +44,7 @@
       <td>{{ item.getDateOfBirth() }}</td>
       <td>
         <div class="action-buttons">
-          <button class="btn btn-edit">
+          <button class="btn btn-edit" (click)="openEditUserModal(item)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"

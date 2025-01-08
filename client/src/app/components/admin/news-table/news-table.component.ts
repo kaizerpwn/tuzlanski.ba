@@ -3,7 +3,6 @@ import { Article } from '../../../models/Article';
 import { NewsService } from '../../../services/news.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
-import { NewsModalComponent } from '../news-create-modal/news-create-modal.component';
 import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
 import { NewsEditModalComponent } from '../news-edit-modal/news-edit-modal.component';
@@ -70,10 +69,6 @@ export class NewsTableComponent implements OnInit, OnDestroy {
 
   onPageChange(page: number) {
     this.fetchNews(page);
-  }
-
-  openCreateNewsModal() {
-    this.dialog.open(NewsModalComponent);
   }
 
   openEditNewsModal(news: Article) {

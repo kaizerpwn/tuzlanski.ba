@@ -1,0 +1,69 @@
+<div class="modal-backdrop">
+  <div class="modal-container">
+    <h2 class="modal-title">Uredi korisnika</h2>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <div class="form-group">
+        <label for="username">Korisničko ime</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Lozinka</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="role">Uloga</label>
+        <select id="role" formControlName="role" class="form-control">
+          <option value="">Izaberi ulogu</option>
+          <option value="admin">Admin</option>
+          <option value="user">Korisnik</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="date_of_birth">Datum rođenja</label>
+        <input
+          id="date_of_birth"
+          type="date"
+          formControlName="date_of_birth"
+          class="form-control"
+        />
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Izlaz
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!userForm.valid"
+        >
+          Uredi
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

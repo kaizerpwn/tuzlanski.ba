@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../models/User';
 import { UsersService } from '../../../services/users.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EventService } from '../../../services/event.service';
+import { Subscription } from 'rxjs';
+import { UsersEditModalComponent } from '../users-edit-modal/users-edit-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users-table',
@@ -10,16 +14,30 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.css'],
 })
-export class UsersTableComponent {
+export class UsersTableComponent implements OnInit, OnDestroy {
   users: User[] = [];
+  private usersAddedSubscription!: Subscription;
 
   constructor(
     private usersService: UsersService,
-    protected sanitizer: DomSanitizer
+    protected sanitizer: DomSanitizer,
+    private eventService: EventService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.fetchUsers();
+    this.usersAddedSubscription = this.eventService.usersAddedSource$.subscribe(
+      () => {
+        this.fetchUsers();
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    if (this.usersAddedSubscription) {
+      this.usersAddedSubscription.unsubscribe();
+    }
   }
 
   fetchUsers() {
@@ -38,6 +56,10 @@ export class UsersTableComponent {
           } as unknown as User)
       );
     });
+  }
+
+  openEditUserModal(user: User) {
+    this.dialog.open(UsersEditModalComponent, { data: user });
   }
 
   protected deleteUser(id: number) {
