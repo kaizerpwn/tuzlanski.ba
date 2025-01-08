@@ -166,6 +166,7 @@
   font-size: 0.875rem;
   text-decoration: none;
   transition: background-color 0.2s;
+  font-weight: 1000;
 }
 
 .tags-title {
