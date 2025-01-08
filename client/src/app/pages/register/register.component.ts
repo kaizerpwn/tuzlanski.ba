@@ -52,10 +52,8 @@ export class RegisterComponent {
       this.usersService.register(user).subscribe(
         (response) => {
           this.router.navigate(['/']);
-          console.log('Registration successful', response);
         },
         (error) => {
-          console.error('Registration failed', error);
           this.errorMessage = 'Došlo je do greške pri registraciji.';
         }
       );

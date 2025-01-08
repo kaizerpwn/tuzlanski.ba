@@ -40,11 +40,9 @@ export class LoginComponent {
 
       this.usersService.login(email, password).subscribe(
         (response: any) => {
-          if (response.message === 'Login successful') {
-            console.log('Login successful', response);
+          if (response.message === 'Uspješno ste se prijavili.') {
             this.router.navigate(['/admin']);
           } else {
-            console.error('Login failed', response.message);
             this.errorMessage =
               response.message || 'Prijava nije uspjela. Pokušajte ponovo.';
           }
@@ -55,7 +53,6 @@ export class LoginComponent {
         }
       );
     } else {
-      console.log('Invalid form submission');
       this.errorMessage =
         'Molimo popunite formu ispravno prije nego što nastavite.';
     }
