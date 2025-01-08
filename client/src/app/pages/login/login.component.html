@@ -54,6 +54,11 @@
         Prijavi se
       </button>
     </form>
+
+    <div *ngIf="errorMessage" class="error-container">
+      <p class="error-text">{{ errorMessage }}</p>
+    </div>
+
     <p class="register-new-account">
       Ne posjedujete račun? <a routerLink="/register">Registrujte se</a>
     </p>

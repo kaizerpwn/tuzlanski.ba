@@ -88,3 +88,15 @@
 .register-new-account a:hover {
   text-decoration: underline;
 }
+
+.error-container {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.error-text {
+  color: #ff5252;
+  font-size: 14px;
+  margin: 0;
+}

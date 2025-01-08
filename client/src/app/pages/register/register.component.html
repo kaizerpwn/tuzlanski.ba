@@ -110,6 +110,10 @@
         </div>
       </div>
 
+      <div *ngIf="errorMessage" class="error-container">
+        <p class="error-text">{{ errorMessage }}</p>
+      </div>
+
       <button
         type="submit"
         class="register-btn"

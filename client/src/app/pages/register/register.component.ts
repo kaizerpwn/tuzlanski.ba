@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/User';
 
@@ -19,8 +19,13 @@ import { User } from '../../models/User';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private usersService: UsersService) {
+  constructor(
+    private fb: FormBuilder,
+    private usersService: UsersService,
+    private router: Router
+  ) {
     this.registerForm = this.fb.group(
       {
         username: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,18 +45,23 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    this.errorMessage = null;
+
     if (this.registerForm.valid) {
-      console.log('Form Submitted!', this.registerForm.value);
       const user = new User(this.registerForm.value);
-      console.log('Date of Birth:', this.registerForm.value.dateOfBirth);
       this.usersService.register(user).subscribe(
         (response) => {
+          this.router.navigate(['/']);
           console.log('Registration successful', response);
         },
         (error) => {
           console.error('Registration failed', error);
+          this.errorMessage = 'Došlo je do greške pri registraciji.';
         }
       );
+    } else {
+      this.errorMessage =
+        'Molimo popunite formu ispravno prije nego što nastavite.';
     }
   }
 }
