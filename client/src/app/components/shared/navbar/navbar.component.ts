@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CATEGORIES } from '../../../utils/constants';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgFor } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,14 @@ export class NavbarComponent {
     ...CATEGORIES,
   ];
 
+  constructor(protected authService: AuthService, private router: Router) {}
+
   isMobileMenuOpen = false;
+
+  handleLogout() {
+    this.router.navigate(['/login']);
+    this.authService.logout();
+  }
 
   toggleMobileMenu() {
     console.log('Mobile menu toggled');

@@ -1,2 +1,1 @@
-export const API_URL =
-  'http://localhost/news-portal-ipi-projekat-2/server/controllers';
+export const API_URL = 'https://tuzlanski.kaizerpwn.dev/server/controllers';

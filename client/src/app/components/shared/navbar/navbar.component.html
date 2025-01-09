@@ -15,11 +15,15 @@
     <span></span>
   </div>
   <div class="navbar-icons">
+    @if(!this.authService.isLoggedIn()) {
     <i class="fas fa-sun"></i>
     <a routerLink="/login">
       <i class="fas fa-user"></i>
     </a>
     <i class="fas fa-search"></i>
+    } @else {
+    <i class="fas fa-right-from-bracket" (click)="handleLogout()"></i>
+    }
   </div>
 </nav>
 <div class="mobile-menu" [class.open]="isMobileMenuOpen">
