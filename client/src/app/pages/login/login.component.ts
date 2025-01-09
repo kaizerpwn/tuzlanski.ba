@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private usersService: UsersService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -42,6 +44,7 @@ export class LoginComponent {
         (response: any) => {
           if (response.message === 'Uspješno ste se prijavili.') {
             this.router.navigate(['/admin']);
+            this.authService.login();
           } else {
             this.errorMessage =
               response.message || 'Prijava nije uspjela. Pokušajte ponovo.';

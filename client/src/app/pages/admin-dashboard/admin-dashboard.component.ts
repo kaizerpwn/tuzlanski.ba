@@ -4,6 +4,8 @@ import { AnalyticsComponent } from '../../components/admin/analytics/analytics.c
 import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admin-sidebar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NewsModalComponent } from '../../components/admin/news-create-modal/news-create-modal.component';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,7 +15,15 @@ import { NewsModalComponent } from '../../components/admin/news-create-modal/new
   styleUrl: './admin-dashboard.component.css',
 })
 export class AdminDashboardComponent {
-  constructor(private dialogRef: MatDialog) {}
+  constructor(
+    private dialogRef: MatDialog,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   openCreateModal() {
     const dialogRef = this.dialogRef.open(NewsModalComponent, {

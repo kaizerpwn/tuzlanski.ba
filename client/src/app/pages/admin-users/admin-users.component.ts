@@ -3,6 +3,8 @@ import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admi
 import { UsersTableComponent } from '../../components/admin/users-table/users-table.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersCreateModalComponent } from '../../components/admin/users-create-modal/users-create-modal.component';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-users',
@@ -12,7 +14,15 @@ import { UsersCreateModalComponent } from '../../components/admin/users-create-m
   styleUrl: './admin-users.component.css',
 })
 export class AdminUsersComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   openCreateUserModal() {
     this.dialog.open(UsersCreateModalComponent);
